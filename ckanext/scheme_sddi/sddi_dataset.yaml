@@ -16,15 +16,16 @@ dataset_fields:
 
   - field_name: notes
     label: Description
-    required: true
+    required: True
     validators: scheming_required
     form_snippet: markdown.html
     form_placeholder: eg. Some useful notes about the data
 
   - field_name: tag_string
     label: Tags
-    required: true
+    required: True
     preset: tag_string_autocomplete
+    validators: required_tags tag_string_convert
     form_placeholder: eg. economy, mental health, government
     help_text:
       Über Tags können Katalogeinträge besser gefunden werden. Ein Tag ist
@@ -32,42 +33,44 @@ dataset_fields:
 
   - field_name: license_id
     label: License
-    required: true
+    required: True
     validators: scheming_required
     form_snippet: license.html
     help_text: License definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
 
-  ##### requires composite and repeating ext#######
   - field_name: author
     label: Author
-    preset: composite_repeating
     form_blanks: 1
+    preset: composite_repeating
     subfields:
-      - field_name: author
+      - field_name: author_name
         label: Author
-        required: true
+        required: True
         validators: scheming_required
         form_placeholder: Joe Bloggs
+
       - field_name: author_email
         form_placeholder: joe@example.com
         label: Author Email
 
-  #####  requires composite and repeating ext #########
   - field_name: maintainer
     label: Maintainer
-    preset: composite_repeating
     form_blanks: 1
+    preset: composite_repeating
     subfields:
-      - field_name: maintainer
+      - field_name: maintainer_name
         label: Maintainer
         form_placeholder: Joe Bloggs
-      - field_name: Maintainer Email
+
+      - field_name: maintainer_email
         form_placeholder: joe@example.com
         label: Maintainer Email
+
       - field_name: phone
         label: Phone number
         display_snippet: text.html
         form_placeholder: "+49 8161 71 0000"
+
       - field_name: role
         label: Role
         preset: select
@@ -91,7 +94,7 @@ dataset_fields:
   - field_name: group
     label: Group
     form_snippet: group.html
-    display_snippet:
+    display_snippet: null
 
   - field_name: language
     label: Language
@@ -102,7 +105,7 @@ dataset_fields:
         label: Deutsch
       - value: en
         label: English
-        help_text: Legt fest in welcher Sprache der Katalogeintrag verfasst ist.
+    help_text: Legt fest in welcher Sprache der Katalogeintrag verfasst ist.
 
   - field_name: version
     label: Version
@@ -116,10 +119,10 @@ dataset_fields:
   - field_name: begin_collection_date
     label: Start des Gültigkeitszeitraumes
     preset: date
+
   - field_name: end_collection_date
     label: Ende des Gültigkeitszeitraumes
     preset: date
-    validators: convert_to_extras
     help_text:
       Dies markiert den Gültigkeitszeitraum des Katalogeintrags. Anhand dieses
       Zeitraums kann später nach Einträgen gesucht werden.
@@ -134,7 +137,7 @@ dataset_fields:
 
   - field_name: licence_agreement
     label: Datenschutzerklärung
-    required: true
+    required: True
     preset: multiple_checkbox
     choices:
       - value: licence_agreement_check
@@ -160,19 +163,19 @@ resource_fields:
 
   - field_name: format
     label: Format
-    required: true
-    validators: scheming_required
+    required: True
     preset: resource_format_autocomplete
 
   # restricted and composite are required
   - field_name: restricted
-    preset: composite
-    subfields:
+    label: Zugriffsrechte
+    repeating_subfields:
+
       - field_name: level
         label: Zugriffsrechte
         preset: select
-        form_include_blank_choice: "false"
-        required: "true"
+        form_include_blank_choice: False
+        required: True
         choices:
           - value: public
             label: Öffentlich

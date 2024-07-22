@@ -1,3 +1,5 @@
+import json
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as tk
 
@@ -9,6 +11,7 @@ class SchemeSddiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IPackageController, inherit=True)
 
     # IConfigurer
 
@@ -38,6 +41,20 @@ class SchemeSddiPlugin(plugins.SingletonPlugin):
 
     def get_validators(self):
         return {
-            "composite_group2json": validators.composite_group2json,
+            "required_tags": validators.required_tags,
             "composite_repeating_group2json": validators.composite_repeating_group2json,
         }
+
+    # IPackageController
+    # def before_dataset_index(self, dataset_dict):
+    #     return self.before_index(dataset_dict)
+
+    # def before_index(self, dataset_dict):
+    #     if "author" in dataset_dict:
+    #         dataset_dict["author"] = json.dumps(dataset_dict.get("author"))
+
+    #     if "maintainer" in dataset_dict:
+    #         dataset_dict["maintainer"] = json.dumps(dataset_dict.get("maintainer"))
+
+    #     return dataset_dict
+
