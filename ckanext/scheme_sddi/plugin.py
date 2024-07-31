@@ -1,14 +1,18 @@
+import json
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as tk
 
 import ckanext.scheme_sddi.helpers as helpers
 import ckanext.scheme_sddi.validators as validators
 
+from ckanext.scheme_sddi.views import blueprint
 
 class SchemeSddiPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IBlueprint)
 
     # IConfigurer
 
@@ -38,6 +42,10 @@ class SchemeSddiPlugin(plugins.SingletonPlugin):
 
     def get_validators(self):
         return {
-            "composite_group2json": validators.composite_group2json,
+            "required_tags": validators.required_tags,
             "composite_repeating_group2json": validators.composite_repeating_group2json,
         }
+
+    # IBlueprint
+    def get_blueprint(self):
+        return [blueprint]

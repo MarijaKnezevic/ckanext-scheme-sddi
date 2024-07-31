@@ -2,6 +2,7 @@ import json
 
 import ckanext.scheming.helpers as sh
 import ckan.lib.navl.dictization_functions as df
+from ckan.views.dataset import _tag_string_to_list
 
 from ckanext.scheming.validation import scheming_validator
 from ckantoolkit import _, get_validator
@@ -13,6 +14,20 @@ StopOnError = df.StopOnError
 missing = df.missing
 
 not_empty = get_validator('not_empty')
+
+
+def required_tags(key, data, errors, context):
+    data_dict = df.unflatten(data)
+    if not data_dict.get('tags'):
+        if not data_dict.get('tag_string'):
+            errors[key].append(_('Missing value'))
+            raise StopOnError
+    else:
+        tags = []
+        for tag in data_dict['tags']:
+            tags.append(tag['name'])
+        data_dict['tag_string'] = tags
+    df.flatten_dict(data_dict, data)
 
 
 def composite_not_empty_subfield(key, subfield_label, value, errors):
@@ -155,19 +170,3 @@ def composite_repeating_group2json(field, schema):
             not_empty(key, data, errors, context)
 
     return validator
-
-# this method doesn't work so it shouldn't be used
-# def composite_group2json_output(value):
-#    """
-#    Return stored json representation as a dictionary, if
-#    value is already a dictionary just pass it through.
-#    """
-#    if isinstance(value, dict):
-#        return value
-#    if value is None:
-#        return {}
-#    try:
-#        return json.loads(value)
-#    except ValueError:
-#        logger.warn ("ValeError: " + str(value))
-#    return {}
