@@ -305,7 +305,7 @@ dataset_fields:
   - field_name: programming_language
     label: Programming Language
     validators: ignore_missing
-    preset: multiple_select
+    preset: select
     choices:
       - value: Java
         label: Java
