@@ -1,6 +1,6 @@
 scheming_version: 2
-dataset_type: software
-about: "SDDI Software metadata schema"
+dataset_type: method
+about: "SDDI Method metadata schema"
 about_url: https://github.com/MarijaKnezevic/ckanext-scheme-sddi
 
 dataset_fields:
@@ -40,7 +40,42 @@ dataset_fields:
     required: True
     validators: scheming_required
     form_snippet: license.html
-    help_text: License definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
+    help_text: License definitions and additional information can be found at http://opendefinition.org/
+
+  - field_name: status
+    label: Status
+    required: True
+    validators: scheming_required
+    preset: select
+    choices:
+      - value: draft
+        label: Draft
+      - value: active
+        label: Active
+      - value: deleted
+        label: Deleted
+
+  - field_name: access_rights
+    label: Access Rights
+    required: True
+    validators: scheming_required
+    preset: select
+    choices:
+      - value: private
+        label: Private
+      - value: public
+        label: Public
+
+  - field_name: language
+    label: Language
+    validators: ignore_missing
+    preset: select
+    choices:
+      - value: de
+        label: Deutsch
+      - value: en
+        label: English
+    help_text: Legt fest in welcher Sprache der Katalogeintrag verfasst ist.
 
   - field_name: author
     label: Author
@@ -138,39 +173,48 @@ dataset_fields:
     form_snippet: group.html
     display_snippet: null
 
-  - field_name: language
-    label: Language
-    validators: ignore_missing
-    preset: select
+  - field_name: theme
+    label: Theme
+    preset: multiple_select
     choices:
-      - value: de
-        label: Deutsch
-      - value: en
-        label: English
-    help_text: Legt fest in welcher Sprache der Katalogeintrag verfasst ist.
+      - value: Work
+        label: Work
+      - value: Construction
+        label: Construction
+      - value: Education
+        label: Education
+      - value: Energy
+        label: Energy
+      - value: Health
+        label: Health
+      - value: Industry_Craft
+        label: Industry / Craft
+      - value: Trade
+        label: Trade
+      - value: Information
+        label: Information
+      - value: Technology
+        label: Technology
+      - value: Culture
+        label: Culture
+      - value: Agriculture
+        label: Agriculture
+      - value: Mobility
+        label: Mobility
+      - value: Urban_Planning
+        label: Urban Planning
+      - value: Tourism_Freetime
+        label: Tourism & Freetime
+      - value: Environment
+        label: Environment
+      - value: Administration
+        label: Administration
+      - value: Living
+        label: Living
 
-  - field_name: status
-    label: Status
-    required: True
-    validators: scheming_required
-    preset: select
-    choices:
-      - value: draft
-        label: Draft
-      - value: active
-        label: Active
-      - value: deleted
-        label: Deleted
-
-  - field_name: begin_collection_date
-    label: Start des Gültigkeitszeitraumes
-    preset: date
-
-  - field_name: end_collection_date
-    label: Ende des Gültigkeitszeitraumes
-    preset: date
-    help_text:
-      Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
+  - field_name: custom-fields
+    label: Benutzerdefiniertes Feld
+    form_snippet: custom_form_fields.html
 
   - field_name: update_period
     label: Update Period
@@ -208,6 +252,16 @@ dataset_fields:
       - value: biennially
         label: Biennially
 
+  - field_name: begin_collection_date
+    label: Start des Gültigkeitszeitraumes
+    preset: date
+
+  - field_name: end_collection_date
+    label: Ende des Gültigkeitszeitraumes
+    preset: date
+    help_text:
+      Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
+
   - field_name: spatial
     label:
       en: Spatial extent
@@ -224,7 +278,41 @@ dataset_fields:
       - value: licence_agreement_check
         label: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
 
-  # ── Software specific fields ──────────────────────────────────────────────
+  # ── Method specific fields ────────────────────────────────────────────────
+
+  - field_name: purpose
+    label: Purpose
+    validators: ignore_missing
+    form_snippet: markdown.html
+    help_text: What problem or task does this method address?
+
+  - field_name: inputs
+    label: Inputs
+    validators: ignore_missing
+    form_snippet: markdown.html
+    help_text: Description of input data or parameters required.
+
+  - field_name: output
+    label: Output
+    validators: ignore_missing
+    form_snippet: markdown.html
+    help_text: Description of the method's results or products.
+
+  - field_name: steps
+    label: Steps / Workflow
+    validators: ignore_missing
+    form_snippet: markdown.html
+    help_text: Step-by-step description of the method.
+
+  - field_name: format_input
+    label: Input Format
+    validators: ignore_missing
+    form_placeholder: e.g. CSV, GeoJSON, TIFF
+
+  - field_name: format_output
+    label: Output Format
+    validators: ignore_missing
+    form_placeholder: e.g. GeoJSON, PDF, PNG
 
   - field_name: version
     label: Version
@@ -235,46 +323,11 @@ dataset_fields:
     label: Version Note
     validators: ignore_missing
     form_snippet: markdown.html
-    help_text: Release notes or changelog for this version.
-
-  - field_name: development_status
-    label: Development Status
-    validators: ignore_missing
-    preset: select
-    choices:
-      - value: concept
-        label: Concept
-      - value: design
-        label: Design
-      - value: development
-        label: Development
-      - value: testing
-        label: Testing
-      - value: operational
-        label: Operational
-      - value: maintenance
-        label: Maintenance
-      - value: deprecated
-        label: Deprecated
-      - value: suspended
-        label: Suspended
-      - value: pilot
-        label: Pilot
-      - value: archived
-        label: Archived
-      - value: prototype
-        label: Prototype
-      - value: planned
-        label: Planned
-      - value: released
-        label: Released
-      - value: experimental
-        label: Experimental
 
   - field_name: programming_language
     label: Programming Language
     validators: ignore_missing
-    preset: select
+    preset: multiple_select
     choices:
       - value: Java
         label: Java
@@ -301,94 +354,38 @@ dataset_fields:
       - value: Other
         label: Other
 
-  - field_name: operating_system
-    label: Operating System
+  - field_name: development_status
+    label: Development Status
     validators: ignore_missing
-    form_placeholder: e.g. Linux, Windows, macOS
-
-  - field_name: hardware_requirements
-    label: Hardware Requirements
-    validators: ignore_missing
-    form_snippet: markdown.html
-
-  - field_name: input_description
-    label: Input Description
-    validators: ignore_missing
-    form_snippet: markdown.html
-
-  - field_name: output_description
-    label: Output Description
-    validators: ignore_missing
-    form_snippet: markdown.html
-
-  - field_name: supported_data_formats
-    label: Supported Data Formats
-    validators: ignore_missing
-    form_placeholder: e.g. GeoJSON, CSV, GeoTIFF
-
-  - field_name: interoperability_limitations
-    label: Interoperability Limitations
-    validators: ignore_missing
-    form_snippet: markdown.html
-
-  - field_name: import_type
-    label: Import Types
-    validators: ignore_missing
-    form_placeholder: e.g. CSV, Shapefile
-
-  - field_name: export_type
-    label: Export Types
-    validators: ignore_missing
-    form_placeholder: e.g. GeoJSON, PDF
-
-  - field_name: license_period
-    label: License Period
-    validators: ignore_missing
-    form_placeholder: e.g. 2024-01-01 to 2024-12-31
-
-  - field_name: license_user_count
-    label: License User Count
-    validators: ignore_missing
-    form_placeholder: e.g. 10
-
-  - field_name: latest_maintenance_date
-    label: Latest Maintenance Date
-    preset: date
-    validators: ignore_missing
-
-  - field_name: maintenance_note
-    label: Maintenance Note
-    validators: ignore_missing
-    form_snippet: markdown.html
-
-  - field_name: custom-fields
-    label: Benutzerdefiniertes Feld
-    form_snippet: custom_form_fields.html
-
+    preset: select
+    choices:
+      - value: concept
+        label: Concept
+      - value: design
+        label: Design
+      - value: development
+        label: Development
+      - value: testing
+        label: Testing
+      - value: operational
+        label: Operational
+      - value: maintenance
+        label: Maintenance
+      - value: deprecated
+        label: Deprecated
+      - value: archived
+        label: Archived
+      - value: prototype
+        label: Prototype
+      - value: released
+        label: Released
+      - value: experimental
+        label: Experimental
 
 resource_fields:
   - field_name: url
     label: URL
     preset: resource_url_upload
-
-  - field_name: identifier
-    label: Identifier
-    validators: ignore_missing
-
-  - field_name: software_help_url
-    label: Software Help URL
-    validators: ignore_missing
-    form_placeholder: https://example.com/help
-
-  - field_name: documentation_url
-    label: Documentation URL
-    validators: ignore_missing
-    form_placeholder: https://example.com/docs
-
-  - field_name: code_repository_url
-    label: Code Repository URL
-    validators: ignore_missing
-    form_placeholder: https://github.com/example/repo
 
   - field_name: name
     label: Name
@@ -438,11 +435,6 @@ resource_fields:
     preset: date
     validators: ignore_missing
 
-  - field_name: license
-    label: License
-    validators: ignore_missing
-    form_placeholder: e.g. https://creativecommons.org/licenses/by/4.0/
-
   - field_name: restricted_level
     label: Zugriffsrechte
     validators: scheming_required
@@ -464,3 +456,4 @@ resource_fields:
     label: Allowed Users
     preset: tag_string_autocomplete
     data-module-source: "/api/2/util/user/autocomplete?q=?"
+  
