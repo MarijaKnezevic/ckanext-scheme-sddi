@@ -1,6 +1,6 @@
 scheming_version: 2
-dataset_type: method
-about: "SDDI Method metadata schema"
+dataset_type: online-application
+about: "SDDI Online Application metadata schema"
 about_url: https://github.com/MarijaKnezevic/ckanext-scheme-sddi
 
 dataset_fields:
@@ -223,6 +223,16 @@ dataset_fields:
     help_text:
       Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
 
+  - field_name: issued
+    label: Issued
+    preset: date
+    validators: ignore_missing
+
+  - field_name: modified
+    label: Modified
+    preset: date
+    validators: ignore_missing
+
   - field_name: spatial
     label:
       en: Spatial extent
@@ -239,109 +249,73 @@ dataset_fields:
       - value: licence_agreement_check
         label: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
 
-  # ── Method specific fields ────────────────────────────────────────────────
+  # ── Online Application specific fields ───────────────────────────────────
 
-  - field_name: purpose
-    label: Purpose
+  - field_name: hosted_by
+    label: Hosted By
     validators: ignore_missing
-    form_snippet: markdown.html
-    help_text: What problem or task does this method address?
+    form_placeholder: e.g. AWS, TU Munich HPC
 
-  - field_name: inputs
-    label: Inputs
+  - field_name: servers
+    label: Servers
     validators: ignore_missing
-    form_snippet: markdown.html
-    help_text: Description of input data or parameters required.
+    form_placeholder: e.g. https://app.example.com
 
-  - field_name: output
-    label: Output
+  - field_name: security
+    label: Security
     validators: ignore_missing
-    form_snippet: markdown.html
-    help_text: Description of the method's results or products.
+    form_placeholder: e.g. OAuth2, API Key, Basic Auth
 
-  - field_name: steps
-    label: Steps / Workflow
+  - field_name: variables
+    label: Variables
     validators: ignore_missing
-    form_snippet: markdown.html
-    help_text: Step-by-step description of the method.
+    form_snippet: textarea.html
 
-  - field_name: format_input
-    label: Input Format
+  - field_name: parameters
+    label: Parameters
     validators: ignore_missing
-    form_placeholder: e.g. CSV, GeoJSON, TIFF
+    form_snippet: textarea.html
 
-  - field_name: format_output
-    label: Output Format
+  - field_name: supported_format
+    label: Supported Formats
     validators: ignore_missing
-    form_placeholder: e.g. GeoJSON, PDF, PNG
+    form_placeholder: e.g. GeoJSON, CSV, GeoTIFF
 
-  - field_name: version
-    label: Version
-    validators: ignore_missing unicode_safe package_version_validator
-    form_placeholder: "1.0"
-
-  - field_name: version_note
-    label: Version Note
-    validators: ignore_missing
-    form_snippet: markdown.html
-
-  - field_name: programming_language
-    label: Programming Language
+  - field_name: web_standard
+    label: Web Standard
     validators: ignore_missing
     preset: select
     choices:
-      - value: Java
-        label: Java
-      - value: Python
-        label: Python
-      - value: C
-        label: C
-      - value: C_plus_plus
-        label: C++
-      - value: CSharp
-        label: C# (CSharp)
-      - value: JavaScript
-        label: JavaScript
-      - value: Rust
-        label: Rust
-      - value: Kotlin
-        label: Kotlin
-      - value: Ruby
-        label: Ruby
-      - value: R
-        label: R
-      - value: MATLAB
-        label: MATLAB
+      - value: HTML
+        label: HTML
+      - value: CSS3
+        label: CSS3
+      - value: HTTP
+        label: HTTP
+      - value: OpenAPI
+        label: OpenAPI Specification
+      - value: WSDL
+        label: Web Services Description Language (WSDL)
       - value: Other
         label: Other
 
-  - field_name: development_status
-    label: Development Status
+  - field_name: service_doc
+    label: Service Documentation URL
     validators: ignore_missing
-    preset: select
-    choices:
-      - value: concept
-        label: Concept
-      - value: design
-        label: Design
-      - value: development
-        label: Development
-      - value: testing
-        label: Testing
-      - value: operational
-        label: Operational
-      - value: maintenance
-        label: Maintenance
-      - value: deprecated
-        label: Deprecated
-      - value: archived
-        label: Archived
-      - value: prototype
-        label: Prototype
-      - value: released
-        label: Released
-      - value: experimental
-        label: Experimental
+    form_placeholder: https://example.com/docs
+
+  - field_name: conformance
+    label: Conformance
+    validators: ignore_missing
+    form_placeholder: e.g. OGC API – Features Part 1
+
+  - field_name: client_credentials
+    label: Client Credentials
+    validators: ignore_missing
+
+  - field_name: authorization_code
+    label: Authorization Code
+    validators: ignore_missing
 
 resource_fields:
   - field_name: url
@@ -361,6 +335,11 @@ resource_fields:
     label: Format
     required: True
     preset: resource_format_autocomplete
+
+  - field_name: external_docs
+    label: External Documentation URL
+    validators: ignore_missing
+    form_placeholder: https://example.com/external-docs
 
   - field_name: access_url
     label: Access URL
@@ -417,4 +396,3 @@ resource_fields:
     label: Allowed Users
     preset: tag_string_autocomplete
     data-module-source: "/api/2/util/user/autocomplete?q=?"
-  
