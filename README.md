@@ -2,7 +2,7 @@
 The ckanext-theme-sddi is a CKAN extension crafted to provide a specialized theme for the Smart District Data Infrastructure [(SDDI)](https://www.asg.ed.tum.de/en/gis/projects/smart-district-data-infrastructure/).  This extension enhances the CKAN platform by integrating a custom theme that aligns with the SDDI’s visual and functional requirements.
 
 ### Funcionality
-The SDDI metadataschema is define in `sddi_dataset.yaml` file which is possible to find [here](https://github.com/MarijaKnezevic/ckanext-scheme-sddi/blob/main/ckanext/scheme_sddi/sddi_dataset.yaml) (`ckanext/scheme_sddi/sddi_dataset.yaml`).
+The SDDI metadata schemas are defined as YAML files under `ckanext/scheme_sddi/`. Each schema corresponds to one of the nine SDDI catalog categories (Datensatz, Software, Methode, Online-Anwendung, Geoobjekt, Online-Dienst, Projekt, Gerät, Digitaler Zwilling).
 
 It is defined according to the following UML diagram:
 ![UMD-SDDI](https://collab.dvb.bayern/download/attachments/67111968/UML%20Diagram%20SDDI%20%28DT%29%20V4.jpg?version=1&modificationDate=1657288940287&api=v2)
@@ -42,12 +42,52 @@ To install ckanext-scheme-sddi:
     pip install -e .
 	pip install -r requirements.txt
 
-3. Add `scheme-sddi` to the `ckan.plugins` setting in your CKAN
+3. Add `scheme_sddi` to the `ckan.plugins` setting in your CKAN
    config file (by default the config file is located at
    `/etc/ckan/default/ckan.ini`).
-   `ckan.plugins = ... scheme_sddi`
 
-4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
+   ```ini
+   ckan.plugins = ... scheming_datasets scheme_sddi
+   ```
+
+4. Add the following scheming configuration to your `ckan.ini`:
+
+   ```ini
+   ####### scheming config #######
+   scheming.dataset_schemas = ckanext.scheme_sddi:sddi_dataset_documents.yaml
+                              ckanext.scheme_sddi:sddi_software.yaml
+                              ckanext.scheme_sddi:sddi_method.yaml
+                              ckanext.scheme_sddi:sddi_online_application.yaml
+                              ckanext.scheme_sddi:sddi_geoobject.yaml
+                              ckanext.scheme_sddi:sddi_online_service.yaml
+                              ckanext.scheme_sddi:sddi_projekt.yaml
+                              ckanext.scheme_sddi:sddi_device.yaml
+                              ckanext.scheme_sddi:sddi_digital_twin.yaml
+   scheming.presets = ckanext.scheming:presets.json ckanext.scheme_sddi:sddi_presets.json
+   scheming.dataset_fallback = false
+   ```
+
+   Each entry maps to one of the SDDI catalog categories:
+
+   | Schema file | `dataset_type` | Category (UI) |
+   |---|---|---|
+   | `sddi_dataset_documents.yaml` | `dataset_documents` | Datensatz und Dokumente |
+   | `sddi_software.yaml` | `software` | Software |
+   | `sddi_method.yaml` | `method` | Methode |
+   | `sddi_online_application.yaml` | `online-application` | Online-Anwendung |
+   | `sddi_geoobject.yaml` | `geoobject` | Geoobjekt |
+   | `sddi_online_service.yaml` | `online-service` | Online-Dienst |
+   | `sddi_projekt.yaml` | `project` | Projekt |
+   | `sddi_device.yaml` | `device` | Gerät / Ding |
+   | `sddi_digital_twin.yaml` | `digital-twin` | Digitaler Zwilling |
+
+   > **Important:** The `dataset_type` value in each YAML file must exactly match
+   > the URL path used in the category selection page (`new_type_select.html`).
+   > Types with multiple words must use hyphens (e.g. `online-service`), not
+   > underscores, to avoid a known CKAN URL-building issue where the first
+   > underscore is replaced with a dot when constructing Flask endpoints.
+
+5. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
 
      sudo service apache2 reload
 
