@@ -223,16 +223,6 @@ dataset_fields:
     help_text:
       Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
 
-  - field_name: issued
-    label: Issued
-    preset: date
-    validators: ignore_missing
-
-  - field_name: modified
-    label: Modified
-    preset: date
-    validators: ignore_missing
-
   - field_name: spatial
     label:
       en: Spatial extent
@@ -253,7 +243,7 @@ dataset_fields:
  
   - field_name: format
     label: Format
-    help_text: File format of the dataset (e.g. CSV, GeoJSON, PDF).
+    help_text: General format or representation of the content.
  
   - field_name: data_type
     label: Data Type
@@ -297,7 +287,8 @@ dataset_fields:
         label: Audio
  
   - field_name: usage_info
-    label: Usage Info
+    label:  Usage Info
+    help_text: Information describing intended usage, limitations, or usage recommendations for the content.
  
   - field_name: reference_system_type
     label: Reference System Type
@@ -331,19 +322,21 @@ dataset_fields:
  
   - field_name: default_horizontal_crs
     label: Default Horizontal CRS
-    help_text: e.g. EPSG:4326, EPSG:25832. Required for spatial data types.
+    help_text: e.g. EPSG:4326, EPSG:25832. Required for spatial data types. More information can be found at  https://epsg.io/.
  
   - field_name: default_vertical_crs
     label: Default Vertical CRS
-    help_text: e.g. EPSG:5783. Required for spatial data types.
+    help_text: e.g. EPSG:5783. Required for spatial data types. More information can be found at  https://epsg.io/.
  
   - field_name: horizontal_resolution
     label: Horizontal Resolution
-    help_text: Required for spatial data types.
+    form_placeholder: "e.g. 1m, 10m, 1:1000, 1 pt/m²"
+    help_text: Ground resolution of the dataset. Required when Data Type is a spatial type.
  
   - field_name: vertical_resolution
     label: Vertical Resolution
-    help_text: Required for spatial data types.
+    form_placeholder: "e.g. 0.1m, 0.5m, 1m"
+    help_text: RVertical accuracy or height resolution of the dataset. Required for spatial data types.
  
   - field_name: content_url
     label: Content URL (Distribution)
