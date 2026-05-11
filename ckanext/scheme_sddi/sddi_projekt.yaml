@@ -1,0 +1,293 @@
+scheming_version: 2
+dataset_type: project
+about: "SDDI Project metadata schema — extends InformationResource with project-specific fields."
+about_url: https://github.com/MarijaKnezevic/ckanext-scheme-sddi
+
+dataset_fields:
+
+  # ---- InformationResource base fields (shared across all types) ----
+
+  - field_name: identifier
+    label: Identifier
+    required: true
+    help_text: Unique identifier for this resource.
+
+  - field_name: title
+    label: Title
+    preset: title
+    required: true
+
+  - field_name: name
+    label: URL
+    preset: dataset_slug
+    form_placeholder: "my-project"
+
+  - field_name: notes
+    label: Description
+    required: true
+    form_snippet: markdown.html
+
+  - field_name: issued
+    label: Issued
+    preset: date
+
+  - field_name: modified
+    label: Modified
+    preset: date
+    required: true
+
+  - field_name: license_id
+    label: Licence
+    required: true
+    form_snippet: select.html
+    choices:
+      - value: "Apache-2.0"
+        label: "Apache License 2.0"
+      - value: "CC-BY-4.0"
+        label: "Attribution 4.0 International (CC BY 4.0)"
+      - value: "CC-BY-SA-4.0"
+        label: "Creative Commons Attribution Share-Alike 4.0"
+      - value: "CC0-1.0"
+        label: "Creative Commons Zero (CC0 1.0)"
+      - value: "notspecified"
+        label: "License Not Specified"
+      - value: "other-open"
+        label: "Other (Open)"
+      - value: "other-closed"
+        label: "Other (Not Open)"
+
+  - field_name: status
+    label: Status
+    required: true
+    form_snippet: select.html
+    choices:
+      - value: draft
+        label: Draft
+      - value: active
+        label: Active
+      - value: deleted
+        label: Deleted
+
+  - field_name: access_rights
+    label: Access Rights
+    required: true
+    form_snippet: select.html
+    choices:
+      - value: private
+        label: Private
+      - value: public
+        label: Public
+
+  - field_name: language
+    label: Language
+    form_snippet: select.html
+    choices:
+      - value: english
+        label: English
+      - value: german
+        label: German
+
+  - field_name: author
+    label: Author
+    required: true
+
+  - field_name: author_email
+    label: Author Email
+
+  - field_name: maintainer
+    label: Maintainer
+
+  - field_name: maintainer_email
+    label: Maintainer Email
+
+  - field_name: maintainer_phone_number
+    label: Maintainer Phone Number
+
+  - field_name: maintainer_role
+    label: Maintainer Role
+    form_snippet: select.html
+    choices:
+      - value: owner
+        label: Owner
+      - value: pointOfContact
+        label: Point of contact
+      - value: publisher
+        label: Publisher
+      - value: contributor
+        label: Contributor
+      - value: funder
+        label: Funder
+      - value: stakeholder
+        label: Stakeholder
+
+  - field_name: tag_string
+    label: Keywords
+    preset: tag_string_autocomplete
+
+  - field_name: custom_fields
+    label: Custom Fields
+
+  - field_name: update_period
+    label: Update Period
+    form_snippet: select.html
+    choices:
+      - value: continual
+        label: Continual
+      - value: daily
+        label: Daily
+      - value: weekly
+        label: Weekly
+      - value: monthly
+        label: Monthly
+      - value: quarterly
+        label: Quarterly
+      - value: annually
+        label: Annually
+      - value: asNeeded
+        label: As needed
+      - value: irregular
+        label: Irregular
+      - value: notPlanned
+        label: Not planned
+      - value: unknown
+        label: Unknown
+
+  - field_name: spatial
+    label: Spatial Extent (GeoJSON)
+    form_snippet: textarea.html
+
+  - field_name: spatial_location_name
+    label: Location Name
+
+  - field_name: spatial_postal_code
+    label: Postal Code
+
+  - field_name: spatial_country
+    label: Country
+
+  - field_name: temporal_start
+    label: Temporal Coverage Start
+    preset: date
+
+  - field_name: temporal_end
+    label: Temporal Coverage End
+    preset: date
+
+  # ---- Project-specific fields ----
+
+  - field_name: project_manager
+    label: Project Manager
+    help_text: Name of the project manager.
+
+  - field_name: project_manager_mail
+    label: Project Manager Email
+
+  - field_name: involved_organizations
+    label: Involved Organizations
+    help_text: Names of organizations involved in the project. Separate with semicolons.
+
+  - field_name: project_team
+    label: Project Team
+    help_text: Names of team members. Separate with semicolons.
+
+  - field_name: costs
+    label: Costs (Decimal)
+    help_text: Total project costs as a decimal number.
+    validators: ignore_missing float_validator
+
+  - field_name: project_status
+    label: Project Status
+    form_snippet: select.html
+    choices:
+      - value: concept
+        label: Concept
+      - value: design
+        label: Design
+      - value: development
+        label: Development
+      - value: testing
+        label: Testing
+      - value: operational
+        label: Operational
+      - value: maintenance
+        label: Maintenance
+      - value: deprecated
+        label: Deprecated
+      - value: suspended
+        label: Suspended
+      - value: pilot
+        label: Pilot
+      - value: archived
+        label: Archived
+      - value: prototype
+        label: Prototype
+      - value: planned
+        label: Planned
+      - value: approved
+        label: Approved
+      - value: released
+        label: Released
+      - value: experimental
+        label: Experimental
+
+  - field_name: project_uri
+    label: Project URI / Distribution
+    help_text: URL to an associated distribution or project page.
+
+resource_fields:
+
+  - field_name: url
+    label: URL
+    preset: resource_url_upload
+
+  - field_name: name
+    label: Name
+    form_placeholder: "e.g. Project report PDF"
+
+  - field_name: description
+    label: Description
+    form_snippet: textarea.html
+
+  - field_name: format
+    label: Format
+    preset: resource_format_autocomplete
+
+  - field_name: access_url
+    label: Access URL
+
+  - field_name: download_url
+    label: Download URL
+
+  - field_name: byte_size
+    label: Byte Size
+    validators: ignore_missing int_validator
+
+  - field_name: mime_type
+    label: MIME Type
+
+  - field_name: character_set
+    label: Character Set
+
+  - field_name: distribution_access_rights
+    label: Distribution Access Rights
+    form_snippet: select.html
+    choices:
+      - value: public
+        label: Public
+      - value: registered_user
+        label: Registered user
+      - value: organization_member
+        label: Organization member
+      - value: allowed_user_only
+        label: Allowed user only
+
+  - field_name: issued
+    label: Issued
+    preset: date
+
+  - field_name: modified
+    label: Modified
+    preset: date
+
+  - field_name: license
+    label: Licence
