@@ -40,7 +40,7 @@ dataset_fields:
     required: True
     validators: scheming_required
     form_snippet: license.html
-    help_text: License definitions and additional information can be found at http://opendefinition.org/
+    help_text: License definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
 
   - field_name: status
     label: Status
@@ -223,16 +223,6 @@ dataset_fields:
     help_text:
       Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
 
-  - field_name: issued
-    label: Issued
-    preset: date
-    validators: ignore_missing
-
-  - field_name: modified
-    label: Modified
-    preset: date
-    validators: ignore_missing
-
   - field_name: spatial
     label:
       en: Spatial extent
@@ -255,7 +245,7 @@ dataset_fields:
     label: Function
     validators: ignore_missing
     form_snippet: markdown.html
-    help_text: Purpose and functional description of this digital twin.
+    help_text: Description of the main purpose and intended function of the digital twin.
  
   - field_name: lifecycle_status
     label: Lifecycle Status
@@ -297,7 +287,7 @@ dataset_fields:
     label: Contents
     validators: ignore_missing
     form_snippet: markdown.html
-    help_text: What data, models, or components does this digital twin contain?
+    help_text: Description or reference to the contents/components included in the digital twin (e.g., datasets, models, services).
  
   - field_name: modeled_entity
     label: Modeled Entity

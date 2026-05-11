@@ -40,7 +40,7 @@ dataset_fields:
     required: True
     validators: scheming_required
     form_snippet: license.html
-    help_text: License definitions and additional information can be found at http://opendefinition.org/
+    help_text: LLicense definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
 
   - field_name: status
     label: Status
@@ -220,18 +220,7 @@ dataset_fields:
   - field_name: end_collection_date
     label: Ende des Gültigkeitszeitraumes
     preset: date
-    help_text:
-      Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
-
-  - field_name: issued
-    label: Issued
-    preset: date
-    validators: ignore_missing
-
-  - field_name: modified
-    label: Modified
-    preset: date
-    validators: ignore_missing
+    help_text: Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
 
   - field_name: spatial
     label:
@@ -255,6 +244,7 @@ dataset_fields:
     label: Hosted By
     validators: ignore_missing
     form_placeholder: e.g. AWS, TU Munich HPC
+    help_text: Organization or platform hosting the online application.
 
   - field_name: servers
     label: Servers
@@ -270,11 +260,13 @@ dataset_fields:
     label: Variables
     validators: ignore_missing
     form_snippet: textarea.html
+    help_text: Variables used or exposed by the application (e.g., configuration or runtime variables).
 
   - field_name: parameters
     label: Parameters
     validators: ignore_missing
     form_snippet: textarea.html
+    help_text: Parameters accepted or required by the application (e.g., request or configuration parameters).
 
   - field_name: supported_format
     label: Supported Formats

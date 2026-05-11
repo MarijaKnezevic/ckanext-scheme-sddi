@@ -40,7 +40,7 @@ dataset_fields:
     required: True
     validators: scheming_required
     form_snippet: license.html
-    help_text: License definitions and additional information can be found at http://opendefinition.org/
+    help_text: License definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
 
   - field_name: status
     label: Status
@@ -268,12 +268,12 @@ dataset_fields:
   - field_name: format_input
     label: Input Format
     validators: ignore_missing
-    form_placeholder: e.g. CSV, GeoJSON, TIFF
+    form_placeholder: Format(s) accepted as input by the method.
 
   - field_name: format_output
     label: Output Format
     validators: ignore_missing
-    form_placeholder: e.g. GeoJSON, PDF, PNG
+    form_placeholder: Format(s) produced as output by the method.
 
   - field_name: version
     label: Version
@@ -417,4 +417,3 @@ resource_fields:
     label: Allowed Users
     preset: tag_string_autocomplete
     data-module-source: "/api/2/util/user/autocomplete?q=?"
-  
