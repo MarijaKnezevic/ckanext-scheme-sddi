@@ -6,60 +6,45 @@ about_url: https://github.com/MarijaKnezevic/ckanext-scheme-sddi
 dataset_fields:
 
   # ---- InformationResource base fields (shared across all types) ----
-
-  - field_name: identifier
-    label: Identifier
-    required: true
-    help_text: Unique identifier for this resource.
-
   - field_name: title
     label: Title
     preset: title
-    required: true
+    form_placeholder: eg. A descriptive title
 
   - field_name: name
     label: URL
     preset: dataset_slug
-    form_placeholder: "my-project"
+    form_placeholder: eg. my-dataset
 
   - field_name: notes
     label: Description
-    required: true
+    required: True
+    validators: scheming_required
     form_snippet: markdown.html
+    form_placeholder: eg. Some useful notes about the data
 
-  - field_name: issued
-    label: Issued
-    preset: date
-
-  - field_name: modified
-    label: Modified
-    preset: date
-    required: true
+  - field_name: tag_string
+    label: Tags
+    required: True
+    preset: tag_string_autocomplete
+    validators: required_tags tag_string_convert
+    form_placeholder: eg. economy, mental health, government
+    help_text:
+      Über Tags können Katalogeinträge besser gefunden werden. Ein Tag ist
+      ein Wort, welches im Zusammenhang mit dem Eintrag steht.
 
   - field_name: license_id
-    label: Licence
-    required: true
-    form_snippet: select.html
-    choices:
-      - value: "Apache-2.0"
-        label: "Apache License 2.0"
-      - value: "CC-BY-4.0"
-        label: "Attribution 4.0 International (CC BY 4.0)"
-      - value: "CC-BY-SA-4.0"
-        label: "Creative Commons Attribution Share-Alike 4.0"
-      - value: "CC0-1.0"
-        label: "Creative Commons Zero (CC0 1.0)"
-      - value: "notspecified"
-        label: "License Not Specified"
-      - value: "other-open"
-        label: "Other (Open)"
-      - value: "other-closed"
-        label: "Other (Not Open)"
+    label: License
+    required: True
+    validators: scheming_required
+    form_snippet: license.html
+    help_text: License definitions and additional information can be found at http://opendefinition.org/
 
   - field_name: status
     label: Status
-    required: true
-    form_snippet: select.html
+    required: True
+    validators: scheming_required
+    preset: select
     choices:
       - value: draft
         label: Draft
@@ -70,8 +55,9 @@ dataset_fields:
 
   - field_name: access_rights
     label: Access Rights
-    required: true
-    form_snippet: select.html
+    required: True
+    validators: scheming_required
+    preset: select
     choices:
       - value: private
         label: Private
@@ -80,56 +66,119 @@ dataset_fields:
 
   - field_name: language
     label: Language
-    form_snippet: select.html
+    validators: ignore_missing
+    preset: select
     choices:
-      - value: english
+      - value: de
+        label: Deutsch
+      - value: en
         label: English
-      - value: german
-        label: German
+    help_text: Legt fest in welcher Sprache der Katalogeintrag verfasst ist.
 
   - field_name: author
     label: Author
-    required: true
+    form_blanks: 1
+    preset: composite_repeating
+    subfields:
+      - field_name: author_name
+        label: Author
+        required: True
+        validators: scheming_required
+        form_placeholder: Joe Bloggs
 
-  - field_name: author_email
-    label: Author Email
+      - field_name: author_email
+        form_placeholder: joe@example.com
+        label: Author Email
 
   - field_name: maintainer
     label: Maintainer
+    form_blanks: 1
+    preset: composite_repeating
+    subfields:
+      - field_name: maintainer_name
+        label: Maintainer
+        form_placeholder: Joe Bloggs
 
-  - field_name: maintainer_email
-    label: Maintainer Email
+      - field_name: maintainer_email
+        form_placeholder: joe@example.com
+        label: Maintainer Email
 
-  - field_name: maintainer_phone_number
-    label: Maintainer Phone Number
+      - field_name: phone
+        label: Phone number
+        display_snippet: text.html
+        form_placeholder: "+49 8161 71 0000"
 
-  - field_name: maintainer_role
-    label: Maintainer Role
-    form_snippet: select.html
-    choices:
-      - value: owner
-        label: Owner
-      - value: pointOfContact
-        label: Point of contact
-      - value: publisher
-        label: Publisher
-      - value: contributor
-        label: Contributor
-      - value: funder
-        label: Funder
-      - value: stakeholder
-        label: Stakeholder
+      - field_name: role
+        label: Role
+        preset: select
+        display_snippet: multiple_select.html
+        choices:
+          - value: data_collector
+            label: Data Collector
+          - value: expert
+            label: Expert
+          - value: resourceProvider
+            label: Resource Provider
+          - value: custodian
+            label: Custodian
+          - value: owner
+            label: Owner
+          - value: distributor
+            label: Distributor
+          - value: originator
+            label: Originator
+          - value: pointOfContact
+            label: Point of Contact
+          - value: principalInvestigator
+            label: Principal Investigator
+          - value: processor
+            label: Processor
+          - value: publisher
+            label: Publisher
+          - value: author
+            label: Author
+          - value: sponsor
+            label: Sponsor
+          - value: coAuthor
+            label: Co-Author
+          - value: collaborator
+            label: Collaborator
+          - value: editor
+            label: Editor
+          - value: mediator
+            label: Mediator
+          - value: rightsHolder
+            label: Rights Holder
+          - value: contributor
+            label: Contributor
+          - value: funder
+            label: Funder
+          - value: stakeholder
+            label: Stakeholder
 
-  - field_name: tag_string
-    label: Keywords
-    preset: tag_string_autocomplete
+  - field_name: owner_org
+    label: Organization
+    form_snippet: organization_alone.html
+    help_text: Legt fest welcher Organisation der Katalogeintrag zugeordnet ist.
 
-  - field_name: custom_fields
-    label: Custom Fields
+  - field_name: owner_org
+    label: Organization
+    form_snippet: visibility.html
+    help_text: Legt fest wer den Katalogeintrag sehen kann.
+
+  - field_name: group
+    label: Group
+    form_snippet: group.html
+    display_snippet: null
+
+  - field_name: custom-fields
+    label: Benutzerdefiniertes Feld
+    form_snippet: custom_form_fields.html
 
   - field_name: update_period
     label: Update Period
-    form_snippet: select.html
+    validators: ignore_missing
+    preset: select
     choices:
       - value: continual
         label: Continual
@@ -137,41 +186,66 @@ dataset_fields:
         label: Daily
       - value: weekly
         label: Weekly
+      - value: fortnightly
+        label: Fortnightly
       - value: monthly
         label: Monthly
       - value: quarterly
         label: Quarterly
+      - value: biannually
+        label: Biannually
       - value: annually
         label: Annually
       - value: asNeeded
-        label: As needed
+        label: As Needed
       - value: irregular
         label: Irregular
       - value: notPlanned
-        label: Not planned
+        label: Not Planned
       - value: unknown
         label: Unknown
+      - value: periodic
+        label: Periodic
+      - value: semimonthly
+        label: Semimonthly
+      - value: biennially
+        label: Biennially
+
+  - field_name: begin_collection_date
+    label: Start des Gültigkeitszeitraumes
+    preset: date
+
+  - field_name: end_collection_date
+    label: Ende des Gültigkeitszeitraumes
+    preset: date
+    help_text:
+      Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
+
+  - field_name: issued
+    label: Issued
+    preset: date
+    validators: ignore_missing
+
+  - field_name: modified
+    label: Modified
+    preset: date
+    validators: ignore_missing
 
   - field_name: spatial
-    label: Spatial Extent (GeoJSON)
-    form_snippet: textarea.html
+    label:
+      en: Spatial extent
+      de: Räumliche Ausdehnung
+    form_snippet: spatial.html
+    display_snippet: spatial.html
+    help_text: Über eine räumliche Ausdehnung (Punkt oder Polygon) kann später nach Katalogeinträgen gesucht werden.
 
-  - field_name: spatial_location_name
-    label: Location Name
-
-  - field_name: spatial_postal_code
-    label: Postal Code
-
-  - field_name: spatial_country
-    label: Country
-
-  - field_name: temporal_start
-    label: Temporal Coverage Start
-    preset: date
-
-  - field_name: temporal_end
-    label: Temporal Coverage End
-    preset: date
+  - field_name: licence_agreement
+    label: Datenschutzerklärung
+    required: True
+    preset: multiple_checkbox
+    choices:
+      - value: licence_agreement_check
+        label: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
 
   # ---- Project-specific fields ----
 

@@ -44,6 +44,7 @@ class SchemeSddiPlugin(plugins.SingletonPlugin):
         return {
             "required_tags": validators.required_tags,
             "composite_repeating_group2json": validators.composite_repeating_group2json,
+            "float_validator": validators.float_validator,
         }
 
     # IBlueprint

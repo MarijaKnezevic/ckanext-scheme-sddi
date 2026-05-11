@@ -16,6 +16,16 @@ missing = df.missing
 not_empty = get_validator('not_empty')
 
 
+def float_validator(key, data, errors, context):
+    value = data.get(key)
+    if value and value is not missing:
+        try:
+            data[key] = str(float(value))
+        except (ValueError, TypeError):
+            errors[key].append(_('Please enter a valid decimal number'))
+            raise StopOnError
+
+
 def required_tags(key, data, errors, context):
     data_dict = df.unflatten(data)
     if not data_dict.get('tags'):
