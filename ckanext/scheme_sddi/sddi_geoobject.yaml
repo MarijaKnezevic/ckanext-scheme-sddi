@@ -40,7 +40,7 @@ dataset_fields:
     required: True
     validators: scheming_required
     form_snippet: license.html
-    help_text: License definitions and additional information can be found at http://opendefinition.org/
+    help_text: License definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
 
   - field_name: status
     label: Status
@@ -223,16 +223,6 @@ dataset_fields:
     help_text:
       Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
 
-  - field_name: issued
-    label: Issued
-    preset: date
-    validators: ignore_missing
-
-  - field_name: modified
-    label: Modified
-    preset: date
-    validators: ignore_missing
-
   - field_name: spatial
     label:
       en: Spatial extent
@@ -255,79 +245,66 @@ dataset_fields:
     label: Object Role
     validators: ignore_missing
     form_placeholder: e.g. building, road, parcel
-    help_text: Role or function of this geo-object in the real world.
+    help_text: Role or function of this geo-object in the real world (e.g., base data, reference layer, thematic layer). The role describes why this object is registered as a "Geoobject" rather than a "Dataset and Documets" or "Device".
 
 resource_fields:
+ 
   - field_name: url
     label: URL
     preset: resource_url_upload
-
+ 
   - field_name: name
     label: Name
-    form_placeholder: eg. January 2011 Gold Prices
-
+ 
   - field_name: description
     label: Description
-    form_snippet: markdown.html
-    form_placeholder: Some useful notes about the data
-
+    form_snippet: textarea.html
+ 
   - field_name: format
     label: Format
-    required: True
     preset: resource_format_autocomplete
-
+ 
   - field_name: access_url
     label: Access URL
-    validators: ignore_missing
-    form_placeholder: https://example.com
-
+ 
   - field_name: download_url
     label: Download URL
-    validators: ignore_missing
-    form_placeholder: https://example.com
-
+ 
   - field_name: byte_size
     label: Byte Size
     validators: ignore_missing int_validator
-
+ 
   - field_name: mime_type
     label: MIME Type
-    validators: ignore_missing
-    form_placeholder: e.g. application/json
-
+ 
   - field_name: character_set
     label: Character Set
-    validators: ignore_missing
-    form_placeholder: e.g. UTF-8
-
-  - field_name: issued
-    label: Issued
-    preset: date
-    validators: ignore_missing
-
-  - field_name: modified
-    label: Modified
-    preset: date
-    validators: ignore_missing
-
-  - field_name: restricted_level
-    label: Zugriffsrechte
-    validators: scheming_required
-    preset: select
-    form_include_blank_choice: False
-    required: True
+ 
+  - field_name: distribution_access_rights
+    label: Distribution Access Rights
+    form_snippet: select.html
     choices:
       - value: public
-        label: Öffentlich
-      - value: registered
-        label: Registrierte Benutzer
-      - value: same_organization
-        label: Mitglieder der selben Organisation
-      - value: only_allowed_users
-        label: Nur ausgewählte Benutzer
-    help_text: Legt fest, wer Zugriff auf die Ressource hat.
+        label: Public
+      - value: registered_user
+        label: Registered user
+      - value: organization_member
+        label: Organization member
+      - value: allowed_user_only
+        label: Allowed user only
 
   - field_name: allowed_users
     label: Allowed Users
     preset: tag_string_autocomplete
     data-module-source: "/api/2/util/user/autocomplete?q=?"
+
+  - field_name: issued
+    label: Issued
+    preset: date
+ 
+  - field_name: modified
+    label: Modified
+    preset: date
+ 
+  - field_name: license
+    label: Licence

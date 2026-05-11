@@ -38,7 +38,7 @@ dataset_fields:
     required: True
     validators: scheming_required
     form_snippet: license.html
-    help_text: License definitions and additional information can be found at http://opendefinition.org/
+    help_text: License definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
 
   - field_name: status
     label: Status
@@ -221,16 +221,6 @@ dataset_fields:
     help_text:
       Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
 
-  - field_name: issued
-    label: Issued
-    preset: date
-    validators: ignore_missing
-
-  - field_name: modified
-    label: Modified
-    preset: date
-    validators: ignore_missing
-
   - field_name: spatial
     label:
       en: Spatial extent
@@ -304,10 +294,6 @@ dataset_fields:
       - value: experimental
         label: Experimental
 
-  - field_name: project_uri
-    label: Project URI / Distribution
-    help_text: URL to an associated distribution or project page.
-
 resource_fields:
 
   - field_name: url
@@ -321,6 +307,10 @@ resource_fields:
   - field_name: description
     label: Description
     form_snippet: textarea.html
+
+  - field_name: project_uri
+    label: Project URI / Distribution
+    help_text: URL to an associated distribution or project page.
 
   - field_name: format
     label: Format

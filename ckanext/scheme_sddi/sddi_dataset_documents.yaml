@@ -40,7 +40,7 @@ dataset_fields:
     required: True
     validators: scheming_required
     form_snippet: license.html
-    help_text: License definitions and additional information can be found at http://opendefinition.org/
+    help_text: License definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
 
   - field_name: status
     label: Status
@@ -388,6 +388,11 @@ resource_fields:
       - value: allowed_user_only
         label: Allowed user only
  
+  - field_name: allowed_users
+    label: Allowed Users
+    preset: tag_string_autocomplete
+    data-module-source: "/api/2/util/user/autocomplete?q=?"
+    
   - field_name: issued
     label: Issued
     preset: date
