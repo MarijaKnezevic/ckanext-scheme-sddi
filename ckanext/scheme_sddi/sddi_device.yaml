@@ -264,14 +264,30 @@ dataset_fields:
         label: Daily
       - value: weekly
         label: Weekly
+      - value: fortnightly
+        label: Fortnightly
       - value: monthly
         label: Monthly
       - value: quarterly
         label: Quarterly
+      - value: biannually
+        label: Biannually
       - value: annually
         label: Annually
       - value: asNeeded
-        label: As needed
+        label: As Needed
+      - value: irregular
+        label: Irregular
+      - value: notPlanned
+        label: Not Planned
+      - value: unknown
+        label: Unknown
+      - value: periodic
+        label: Periodic
+      - value: semimonthly
+        label: Semimonthly
+      - value: biennially
+        label: Biennially
  
   - field_name: maintenance_note
     label: Maintenance Note
@@ -298,16 +314,23 @@ dataset_fields:
     label: Protocol
     form_snippet: select.html
     choices:
+    choices:
       - value: HTTP
         label: HTTP
       - value: HTTPS
         label: HTTPS
+      - value: WebSocket
+        label: WebSocket
+      - value: SOAP
+        label: SOAP
+      - value: RPC
+        label: RPC
+      - value: GraphQL
+        label: GraphQL
       - value: MQTT
         label: MQTT
       - value: AMQP
         label: AMQP
-      - value: WebSocket
-        label: WebSocket
       - value: STOMP
         label: STOMP
       - value: Other
@@ -317,14 +340,40 @@ dataset_fields:
     label: Service Standard
     form_snippet: select.html
     choices:
-      - value: OGC_SensorThings
-        label: OGC SensorThings API
-      - value: OGC_SOS
-        label: OGC Sensor Observation Service
+      - value: OGC_WMS
+        label: OGC Web Map Service
+      - value: OGC_WFS
+        label: OGC Web Feature Service
+      - value: OGC_WCS
+        label: OGC Web Coverage Service
+      - value: OGC_WMTS
+        label: OGC Web Map Tile Service
+      - value: OGC_CSW
+        label: OGC Catalogue Service
+      - value: OGC_API_Features
+        label: OGC API – Features
+      - value: OGC_API_Tiles
+        label: OGC API – Tiles
+      - value: OGC_API_Coverages
+        label: OGC API – Coverages
+      - value: OGC_API_Processes
+        label: OGC API – Processes
+      - value: SLD
+        label: Styled Layer Descriptor
       - value: OpenAPI
         label: OpenAPI Specification
-      - value: Other
-        label: Other
+      - value: REST
+        label: REST architectural style
+      - value: SOAP
+        label: SOAP
+      - value: GraphQL
+        label: GraphQL specification
+      - value: other_open
+        label: Other (Open)
+      - value: other_not_open
+        label: Other (Not Open)
+      - value: other_non_commercial
+        label: Other (Non-Commercial)
  
   - field_name: properties
     label: Properties
@@ -363,8 +412,20 @@ dataset_fields:
         label: Deprecated
       - value: suspended
         label: Suspended
+      - value: pilot
+        label: Pilot
       - value: archived
         label: Archived
+      - value: prototype
+        label: Prototype
+      - value: planned
+        label: Planned
+      - value: approved
+        label: Approved
+      - value: released
+        label: Released
+      - value: experimental
+        label: Experimental
  
   - field_name: observed_property
     label: Observed Property

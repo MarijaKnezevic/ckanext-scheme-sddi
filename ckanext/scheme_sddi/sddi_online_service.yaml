@@ -307,6 +307,14 @@ dataset_fields:
         label: OGC Catalogue Service
       - value: OGC_API_Features
         label: OGC API – Features
+      - value: OGC_API_Tiles
+        label: OGC API – Tiles
+      - value: OGC_API_Coverages
+        label: OGC API – Coverages
+      - value: OGC_API_Processes
+        label: OGC API – Processes
+      - value: SLD
+        label: Styled Layer Descriptor
       - value: OpenAPI
         label: OpenAPI Specification
       - value: REST
@@ -319,6 +327,8 @@ dataset_fields:
         label: Other (Open)
       - value: other_not_open
         label: Other (Not Open)
+      - value: other_non_commercial
+        label: Other (Non-Commercial)
 
   - field_name: protocol
     label: Protocol
@@ -387,14 +397,36 @@ dataset_fields:
     choices:
       - value: vector
         label: Vector
+      - value: vector_point
+        label: Vector – Point
+      - value: vector_polygon
+        label: Vector – Polygon
+      - value: vector_polyline
+        label: Vector – Polyline
+      - value: vector_line
+        label: Vector – Line
+      - value: vector_3d
+        label: Vector – 3D
+      - value: point_cloud
+        label: Point Cloud
+      - value: voxel_grid
+        label: Voxel Grid
+      - value: mesh_3d
+        label: Mesh 3D
       - value: raster
         label: Raster
       - value: text
         label: Text
-      - value: tabular
-        label: Tabular
+      - value: image
+        label: Image
+      - value: video
+        label: Video
       - value: multimodal
         label: Multimodal
+      - value: tabular
+        label: Tabular
+      - value: audio
+        label: Audio
 
   - field_name: client_credentials
     label: Client Credentials
