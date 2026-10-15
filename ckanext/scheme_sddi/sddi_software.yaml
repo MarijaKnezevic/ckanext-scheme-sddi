@@ -383,11 +383,6 @@ dataset_fields:
     validators: ignore_missing
     form_snippet: markdown.html
 
-  - field_name: custom-fields
-    label: Benutzerdefiniertes Feld
-    form_snippet: custom_form_fields.html
-
-
 resource_fields:
   - field_name: url
     label: URL
