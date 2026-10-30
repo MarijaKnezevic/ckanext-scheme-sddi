@@ -290,8 +290,12 @@ dataset_fields:
  
   - field_name: historical_location_time_instant
     label: Historical Location Time Instant
-    help_text: ISO 8601 timestamp for historical location.
- 
+    preset: composite_repeating
+    subfields:
+      - field_name: datetime
+        label: Date and Time
+        preset: date
+
   - field_name: protocol
     label: Protocol
     form_snippet: select.html
