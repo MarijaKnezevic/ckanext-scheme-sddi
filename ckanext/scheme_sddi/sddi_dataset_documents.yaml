@@ -101,6 +101,8 @@ dataset_fields:
             label: Custodian
           - value: owner
             label: Owner
+          - value: user
+            label: User
           - value: distributor
             label: Distributor
           - value: originator
@@ -348,10 +350,6 @@ dataset_fields:
     form_placeholder: "e.g. 0.1m, 0.5m, 1m"
     help_text: Vertical accuracy or height resolution of the dataset. Required for spatial data types.
  
-  - field_name: content_url
-    label: Content URL (Distribution)
-    help_text: URL to the primary distribution of this dataset.
- 
 resource_fields:
  
   - field_name: url
@@ -374,6 +372,10 @@ resource_fields:
  
   - field_name: download_url
     label: Download URL
+ 
+  - field_name: content_url
+    label: Content URL (Distribution)
+    help_text: URL to the primary distribution of this dataset.
  
   - field_name: byte_size
     label: Byte Size

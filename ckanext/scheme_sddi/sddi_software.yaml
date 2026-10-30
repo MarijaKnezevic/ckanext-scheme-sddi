@@ -101,6 +101,8 @@ dataset_fields:
             label: Custodian
           - value: owner
             label: Owner
+          - value: user
+            label: User
           - value: distributor
             label: Distributor
           - value: originator
@@ -257,6 +259,8 @@ dataset_fields:
         label: Prototype
       - value: planned
         label: Planned
+      - value: approved
+        label: Approved
       - value: released
         label: Released
       - value: experimental
@@ -339,8 +343,8 @@ dataset_fields:
 
   - field_name: license_period
     label: License Period
+    preset: date
     validators: ignore_missing
-    form_placeholder: e.g. 2024-01-01 to 2024-12-31
     help_text: Period during which the software license is valid.
 
   - field_name: license_user_count

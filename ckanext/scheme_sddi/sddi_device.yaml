@@ -101,6 +101,8 @@ dataset_fields:
             label: Custodian
           - value: owner
             label: Owner
+          - value: user
+            label: User
           - value: distributor
             label: Distributor
           - value: originator
@@ -229,9 +231,13 @@ dataset_fields:
   - field_name: last_maintenance_date
     label: Last Maintenance Date
     preset: date
- 
+
   - field_name: next_maintenance_date
-    label: Next Maintenance Frequency
+    label: Next Maintenance Date
+    preset: date
+ 
+  - field_name: maintenance_frequency
+    label: Maintenance Frequency
     form_snippet: select.html
     choices:
       - value: continual
@@ -290,7 +296,6 @@ dataset_fields:
     label: Protocol
     form_snippet: select.html
     choices:
-    choices:
       - value: HTTP
         label: HTTP
       - value: HTTPS
@@ -312,20 +317,26 @@ dataset_fields:
       - value: Other
         label: Other
  
-  - field_name: service_standard
-    label: Service Standard
+  - field_name: service_specification
+    label: Service Specification
     form_snippet: select.html
     choices:
       - value: OGC_WMS
-        label: OGC Web Map Service
-      - value: OGC_WFS
-        label: OGC Web Feature Service
-      - value: OGC_WCS
-        label: OGC Web Coverage Service
+        label: OGC Web Map Service (WMS)
       - value: OGC_WMTS
-        label: OGC Web Map Tile Service
+        label: OGC Web Map Tile Service (WMTS)
+      - value: OGC_WFS
+        label: OGC Web Feature Service (WFS)
+      - value: OGC_WCS
+        label: OGC Web Coverage Service (WCS)
+      - value: OGC_WPS
+        label: OGC Web Processing Service (WPS)
       - value: OGC_CSW
-        label: OGC Catalogue Service
+        label: OGC Catalogue Service for the Web (CSW)
+      - value: OGC_SOS
+        label: OGC Sensor Observation Service (SOS)
+      - value: OGC_SPS
+        label: OGC Sensor Planning Service (SPS)
       - value: OGC_API_Features
         label: OGC API – Features
       - value: OGC_API_Tiles
@@ -334,23 +345,37 @@ dataset_fields:
         label: OGC API – Coverages
       - value: OGC_API_Processes
         label: OGC API – Processes
-      - value: SLD
-        label: Styled Layer Descriptor
-      - value: OpenAPI
-        label: OpenAPI Specification
-      - value: REST
-        label: REST architectural style
-      - value: SOAP
-        label: SOAP
+      - value: OGC_API_Records
+        label: OGC API – Records
+      - value: OGC_SensorThings
+        label: OGC SensorThings API
+      - value: Atom_feed
+        label: Atom feed (RFC 4287)
       - value: GraphQL
-        label: GraphQL specification
+        label: GraphQL endpoint
+      - value: REST_OpenAPI
+        label: REST API (OpenAPI)
+      - value: REST_undocumented
+        label: REST API (undocumented)
+      - value: SOAP
+        label: SOAP web service (W3C SOAP)
+      - value: SPARQL
+        label: SPARQL endpoint (W3C SPARQL 1.1 Protocol)
+      - value: SQL
+        label: SQL query service (ISO/IEC 9075)
+      - value: MQTT
+        label: MQTT
+      - value: RPC
+        label: RPC service
+      - value: other
+        label: Other
       - value: other_open
         label: Other (Open)
       - value: other_not_open
         label: Other (Not Open)
       - value: other_non_commercial
         label: Other (Non-Commercial)
- 
+
   - field_name: properties
     label: Properties
     form_snippet: textarea.html

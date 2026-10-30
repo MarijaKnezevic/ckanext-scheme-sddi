@@ -101,6 +101,8 @@ dataset_fields:
             label: Custodian
           - value: owner
             label: Owner
+          - value: user
+            label: User
           - value: distributor
             label: Distributor
           - value: originator
@@ -217,70 +219,45 @@ dataset_fields:
 
   # ── Online Service specific fields ───────────────────────────────────────
 
-  - field_name: service_type
-    label: Service Type
+  - field_name: dataServiceType
+    label: Data Service Type
     validators: ignore_missing
     preset: select
     choices:
-      - value: WMS
-        label: Web Map Service (WMS)
-      - value: WMTS
-        label: Web Map Tile Service (WMTS)
-      - value: WFS
-        label: Web Feature Service (WFS)
-      - value: WCS
-        label: Web Coverage Service (WCS)
-      - value: CSW
-        label: Catalogue Service for the Web (CSW)
-      - value: OGC_API_Features
-        label: OGC API – Features
-      - value: OGC_API_Tiles
-        label: OGC API – Tiles
-      - value: OGC_API_Coverages
-        label: OGC API – Coverages
-      - value: OGC_API_Processes
-        label: OGC API – Processes
-      - value: API
-        label: API
-      - value: RESTful
-        label: RESTful API
-      - value: SOAP
-        label: SOAP-based service
-      - value: GraphQL
-        label: GraphQL endpoint
-      - value: RPC
-        label: RPC – Remote Procedure Call
-      - value: SPARQL
-        label: SPARQL endpoint
-      - value: SQL
-        label: SQL query service
-      - value: other_open
-        label: Other (Open)
-      - value: other_not_open
-        label: Other (Not Open)
-      - value: other_nc
-        label: Other (Non-Commercial)
+      - value: discovery
+        label: Discovery
+      - value: view
+        label: View
+      - value: download
+        label: Download
+      - value: transformation
+        label: Transformation
+      - value: invoke
+        label: Invoke
+      - value: other
+        label: Other
 
-  - field_name: service_type_version
-    label: Service Type Version
-    validators: ignore_missing
-    form_placeholder: e.g. WMS 1.3.0
-
-  - field_name: service_standard
-    label: Service Standard
+  - field_name: service_specification
+    label: Service Specification
     validators: ignore_missing
     preset: select
     choices:
       - value: OGC_WMS
-        label: OGC Web Map Service
-      - value: OGC_WFS
-        label: OGC Web Feature Service
-      - value: OGC_WCS
-        label: OGC Web Coverage Service
+        label: OGC Web Map Service (WMS)
       - value: OGC_WMTS
-        label: OGC Web Map Tile Service
+        label: OGC Web Map Tile Service (WMTS)
+      - value: OGC_WFS
+        label: OGC Web Feature Service (WFS)
+      - value: OGC_WCS
+        label: OGC Web Coverage Service (WCS)
+      - value: OGC_WPS
+        label: OGC Web Processing Service (WPS)
       - value: OGC_CSW
-        label: OGC Catalogue Service
+        label: OGC Catalogue Service for the Web (CSW)
+      - value: OGC_SOS
+        label: OGC Sensor Observation Service (SOS)
+      - value: OGC_SPS
+        label: OGC Sensor Planning Service (SPS)
       - value: OGC_API_Features
         label: OGC API – Features
       - value: OGC_API_Tiles
@@ -289,22 +266,41 @@ dataset_fields:
         label: OGC API – Coverages
       - value: OGC_API_Processes
         label: OGC API – Processes
-      - value: SLD
-        label: Styled Layer Descriptor
-      - value: OpenAPI
-        label: OpenAPI Specification
-      - value: REST
-        label: REST architectural style
-      - value: SOAP
-        label: SOAP
+      - value: OGC_API_Records
+        label: OGC API – Records
+      - value: OGC_SensorThings
+        label: OGC SensorThings API
+      - value: Atom_feed
+        label: Atom feed (RFC 4287)
       - value: GraphQL
-        label: GraphQL specification
+        label: GraphQL endpoint
+      - value: REST_OpenAPI
+        label: REST API (OpenAPI)
+      - value: REST_undocumented
+        label: REST API (undocumented)
+      - value: SOAP
+        label: SOAP web service (W3C SOAP)
+      - value: SPARQL
+        label: SPARQL endpoint (W3C SPARQL 1.1 Protocol)
+      - value: SQL
+        label: SQL query service (ISO/IEC 9075)
+      - value: MQTT
+        label: MQTT
+      - value: RPC
+        label: RPC service
+      - value: other
+        label: Other
       - value: other_open
         label: Other (Open)
       - value: other_not_open
         label: Other (Not Open)
       - value: other_non_commercial
         label: Other (Non-Commercial)
+
+  - field_name: service_specification_version
+    label: Service Specification Version
+    validators: ignore_missing
+    form_placeholder: e.g. WMS 1.3.0
 
   - field_name: protocol
     label: Protocol
@@ -360,11 +356,6 @@ dataset_fields:
     validators: ignore_missing
     form_placeholder: e.g. OAuth2, API Key
     help_text: Security requirements and mechanisms (e.g., TLS, OAuth2, API key, certificates).
-
-  - field_name: external_docs
-    label: External Documentation URL
-    validators: ignore_missing
-    form_placeholder: https://example.com/docs
 
   - field_name: data_type
     label: Data Type
@@ -450,6 +441,10 @@ resource_fields:
     label: Service Endpoint URL
     validators: ignore_missing
     form_placeholder: https://example.com/wms
+
+  - field_name: externalDocs
+    label: External Documents URL
+    form_placeholder: https://example.com/documentation
 
   - field_name: open_api_document
     label: OpenAPI Document URL

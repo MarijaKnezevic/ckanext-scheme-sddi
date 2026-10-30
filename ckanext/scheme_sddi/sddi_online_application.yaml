@@ -101,6 +101,8 @@ dataset_fields:
             label: Custodian
           - value: owner
             label: Owner
+          - value: user
+            label: User
           - value: distributor
             label: Distributor
           - value: originator
@@ -272,10 +274,6 @@ dataset_fields:
     validators: ignore_missing
     form_placeholder: https://example.com/docs
 
-  - field_name: authorization_code
-    label: Authorization Code
-    validators: ignore_missing
-
 resource_fields:
   - field_name: url
     label: URL
@@ -295,6 +293,11 @@ resource_fields:
     required: True
     preset: resource_format_autocomplete
 
+  - field_name: service_doc
+    label: Service Documentation URL
+    validators: ignore_missing
+    form_placeholder: https://example.com/docs
+    
   - field_name: external_docs
     label: External Documentation URL
     validators: ignore_missing

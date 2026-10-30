@@ -93,6 +93,8 @@ dataset_fields:
         choices:
           - value: data_collector
             label: Data Collector
+          - value: user
+            label: User
           - value: expert
             label: Expert
           - value: resourceProvider
@@ -310,10 +312,18 @@ dataset_fields:
         label: Maintenance
       - value: deprecated
         label: Deprecated
+      - value: suspended
+        label: Suspended
+      - value: pilot
+        label: Pilot 
       - value: archived
         label: Archived
       - value: prototype
         label: Prototype
+      - value: planned
+        label: Planned
+      - value: approved
+        label: Approved 
       - value: released
         label: Released
       - value: experimental
