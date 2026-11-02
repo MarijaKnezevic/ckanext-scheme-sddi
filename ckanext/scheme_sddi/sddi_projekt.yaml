@@ -7,7 +7,9 @@ dataset_fields:
 
   # ---- InformationResource base fields (shared across all types) ----
   - field_name: title
-    label: Title
+    label:
+      en: Title
+      de: Titel
     preset: title
     form_placeholder: eg. A descriptive title
 
@@ -17,7 +19,9 @@ dataset_fields:
     form_placeholder: eg. my-dataset
 
   - field_name: notes
-    label: Description
+    label:
+      en: Description
+      de: Beschreibung
     required: True
     validators: scheming_required
     form_snippet: markdown.html
@@ -30,18 +34,24 @@ dataset_fields:
     validators: required_tags tag_string_convert
     form_placeholder: eg. economy, mental health, government
     help_text:
-      Über Tags können Katalogeinträge besser gefunden werden. Ein Tag ist
-      ein Wort, welches im Zusammenhang mit dem Eintrag steht.
+      en: Tags help others find this entry in the catalogue.
+      de: Über Tags können Katalogeinträge besser gefunden werden. Ein Tag ist ein Wort, welches im Zusammenhang mit dem Eintrag steht.
 
   - field_name: license_id
-    label: License
+    label:
+      en: License
+      de: Lizenz
     required: True
     validators: scheming_required
     form_snippet: license.html
-    help_text: License definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
+    help_text:
+      en: License definitions and additional information can be found at http://opendefinition.org/
+      de: Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für offene Daten zu nutzen. Mehr Infos http://opendefinition.org/
 
   - field_name: language
-    label: Language
+    label:
+      en: Language
+      de: Sprache
     validators: ignore_missing
     preset: select
     choices:
@@ -49,7 +59,9 @@ dataset_fields:
         label: Deutsch
       - value: en
         label: English
-    help_text: Legt fest in welcher Sprache der Katalogeintrag verfasst ist.
+    help_text:
+      en: Language in which this catalogue entry is written.
+      de: Legt fest in welcher Sprache der Katalogeintrag verfasst ist.
 
   - field_name: author
     label: Author
@@ -57,14 +69,18 @@ dataset_fields:
     preset: composite_repeating
     subfields:
       - field_name: author_name
-        label: Author
+        label:
+          en: Author Name
+          de: Name des Autors
         required: True
         validators: scheming_required
         form_placeholder: Joe Bloggs
 
       - field_name: author_email
+        label:
+          en: Author Email
+          de: E-Mail des Autors
         form_placeholder: joe@example.com
-        label: Author Email
 
   - field_name: maintainer
     label: Maintainer
@@ -72,220 +88,386 @@ dataset_fields:
     preset: composite_repeating
     subfields:
       - field_name: maintainer_name
-        label: Maintainer
+        label:
+          en: Maintainer Name
+          de: Name des Verantwortlichen
         form_placeholder: Joe Bloggs
 
       - field_name: maintainer_email
+        label:
+          en: Maintainer Email
+          de: E-Mail des Verantwortlichen
         form_placeholder: joe@example.com
-        label: Maintainer Email
 
       - field_name: phone
-        label: Phone number
+        label:
+          en: Phone Number
+          de: Telefonnummer
         display_snippet: text.html
         form_placeholder: "+49 8161 71 0000"
 
       - field_name: role
-        label: Role
+        label:
+          en: Role
+          de: Rolle
         preset: select
         display_snippet: multiple_select.html
         choices:
           - value: data_collector
-            label: Data Collector
+            label:
+              en: Data Collector
+              de: Datenerfasser
           - value: expert
-            label: Expert
+            label:
+              en: Expert
+              de: Experte
           - value: resourceProvider
-            label: Resource Provider
+            label:
+              en: Resource Provider
+              de: Ressourcenanbieter
           - value: custodian
-            label: Custodian
+            label:
+              en: Custodian
+              de: Verwalter
           - value: owner
-            label: Owner
+            label:
+              en: Owner
+              de: Eigentümer
+          - value: user
+            label:
+              en: User
+              de: Benutzer
           - value: distributor
-            label: Distributor
+            label:
+              en: Distributor
+              de: Verteiler
           - value: originator
-            label: Originator
+            label:
+              en: Originator
+              de: Urheber
           - value: pointOfContact
-            label: Point of Contact
+            label:
+              en: Point of Contact
+              de: Ansprechpartner
           - value: principalInvestigator
-            label: Principal Investigator
+            label:
+              en: Principal Investigator
+              de: Hauptermittler
           - value: processor
-            label: Processor
+            label:
+              en: Processor
+              de: Bearbeiter
           - value: publisher
-            label: Publisher
+            label:
+              en: Publisher
+              de: Herausgeber
           - value: author
-            label: Author
+            label:
+              en: Author
+              de: Autor
           - value: sponsor
-            label: Sponsor
+            label:
+              en: Sponsor
+              de: Sponsor
           - value: coAuthor
-            label: Co-Author
+            label:
+              en: Co-Author
+              de: Mitautor
           - value: collaborator
-            label: Collaborator
+            label:
+              en: Collaborator
+              de: Mitarbeiter
           - value: editor
-            label: Editor
+            label:
+              en: Editor
+              de: Redakteur
           - value: mediator
-            label: Mediator
+            label:
+              en: Mediator
+              de: Vermittler
           - value: rightsHolder
-            label: Rights Holder
+            label:
+              en: Rights Holder
+              de: Rechteinhaber
           - value: contributor
-            label: Contributor
+            label:
+              en: Contributor
+              de: Beitragender
           - value: funder
-            label: Funder
+            label:
+              en: Funder
+              de: Förderer
           - value: stakeholder
-            label: Stakeholder
+            label:
+              en: Stakeholder
+              de: Interessenvertreter
 
   - field_name: owner_org
-    label: Organization
+    label:
+      en: Organization
+      de: Organisation
     form_snippet: organization_alone.html
-    help_text: Legt fest welcher Organisation der Katalogeintrag zugeordnet ist.
+    help_text:
+      en: Organization this catalogue entry belongs to.
+      de: Legt fest welcher Organisation der Katalogeintrag zugeordnet ist.
 
   - field_name: owner_org
-    label: Organization
+    label:
+      en: Visibility
+      de: Sichtbarkeit
     form_snippet: visibility.html
-    help_text: Legt fest wer den Katalogeintrag sehen kann.
+    help_text:
+      en: Defines who can see this catalogue entry.
+      de: Legt fest wer den Katalogeintrag sehen kann.
 
   - field_name: group
-    label: Group
+    label:
+      en: Group
+      de: Gruppe
     form_snippet: group.html
     display_snippet: null
 
   - field_name: custom-fields
-    label: Benutzerdefiniertes Feld
+    label:
+      en: Custom Fields
+      de: Benutzerdefiniertes Feld
     form_snippet: custom_form_fields.html
 
   - field_name: update_period
-    label: Update Period
+    label:
+      en: Update Period
+      de: Aktualisierungszeitraum
     validators: ignore_missing
     preset: select
     choices:
       - value: continual
-        label: Continual
+        label:
+          en: Continual
+          de: Kontinuierlich
       - value: daily
-        label: Daily
+        label:
+          en: Daily
+          de: Täglich
       - value: weekly
-        label: Weekly
+        label:
+          en: Weekly
+          de: Wöchentlich
       - value: fortnightly
-        label: Fortnightly
+        label:
+          en: Fortnightly
+          de: Vierzehntäglich
       - value: monthly
-        label: Monthly
+        label:
+          en: Monthly
+          de: Monatlich
       - value: quarterly
-        label: Quarterly
+        label:
+          en: Quarterly
+          de: Vierteljährlich
       - value: biannually
-        label: Biannually
+        label:
+          en: Biannually
+          de: Halbjährlich
       - value: annually
-        label: Annually
+        label:
+          en: Annually
+          de: Jährlich
       - value: asNeeded
-        label: As Needed
+        label:
+          en: As Needed
+          de: Bei Bedarf
       - value: irregular
-        label: Irregular
+        label:
+          en: Irregular
+          de: Unregelmäßig
       - value: notPlanned
-        label: Not Planned
+        label:
+          en: Not Planned
+          de: Nicht geplant
       - value: unknown
-        label: Unknown
+        label:
+          en: Unknown
+          de: Unbekannt
       - value: periodic
-        label: Periodic
+        label:
+          en: Periodic
+          de: Periodisch
       - value: semimonthly
-        label: Semimonthly
+        label:
+          en: Semimonthly
+          de: Halbmonatlich
       - value: biennially
-        label: Biennially
+        label:
+          en: Biennially
+          de: Zweijährlich
 
   - field_name: begin_collection_date
-    label: Start des Gültigkeitszeitraumes
+    label:
+      en: Start of Validity Period
+      de: Start des Gültigkeitszeitraumes
     preset: date
 
   - field_name: end_collection_date
-    label: Ende des Gültigkeitszeitraumes
+    label:
+      en: End of Validity Period
+      de: Ende des Gültigkeitszeitraumes
     preset: date
     help_text:
-      Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
+      en: Marks the validity period of this catalogue entry.
+      de: Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
 
   - field_name: spatial
     label:
-      en: Spatial extent
+      en: Spatial Extent
       de: Räumliche Ausdehnung
     form_snippet: spatial.html
     display_snippet: spatial.html
-    help_text: Über eine räumliche Ausdehnung (Punkt oder Polygon) kann später nach Katalogeinträgen gesucht werden.
+    help_text:
+      en: A spatial extent (point or polygon) allows later searching by location.
+      de: Über eine räumliche Ausdehnung (Punkt oder Polygon) kann später nach Katalogeinträgen gesucht werden.
 
   - field_name: licence_agreement
-    label: Datenschutzerklärung
+    label:
+      en: Data Privacy Declaration
+      de: Datenschutzerklärung
     required: True
     preset: multiple_checkbox
     choices:
       - value: licence_agreement_check
-        label: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
+        label:
+          en: I confirm that all data I have entered is covered by the license selected above.
+          de: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
 
   # ---- Project-specific fields ----
 
   - field_name: project_manager
-    label: Project Manager
-    help_text: Name of the project manager.
+    label:
+      en: Project Manager
+      de: Projektleiter
+    help_text:
+      en: Name of the project manager.
+      de: Name des Projektleiters.
 
   - field_name: project_manager_mail
-    label: Project Manager Email
+    label:
+      en: Project Manager Email
+      de: E-Mail des Projektleiters
 
   - field_name: project_manager_phone
-    label: Project Manager Phone
+    label:
+      en: Project Manager Phone
+      de: Telefon des Projektleiters
     form_placeholder: "+49 8161 71 0000"
 
   - field_name: involved_organizations
-    label: Involved Organizations
-    help_text: Names of organizations involved in the project. Separate with semicolons.
+    label:
+      en: Involved Organizations
+      de: Beteiligte Organisationen
+    help_text:
+      en: Names of organizations involved in the project. Separate with semicolons.
+      de: Namen der beteiligten Organisationen. Mit Semikolon trennen.
 
   - field_name: project_team_member
     label: Project Team Member
     preset: composite_repeating
     form_blanks: 1
+    help_text:
+      en: Add one entry per team member.
+      de: Einen Eintrag pro Teammitglied hinzufügen.
     subfields:
       - field_name: project_team_member_name
-        label: Project Team Member Name
+        label:
+          en: Project Team Member Name
+          de: Name des Teammitglieds
         form_placeholder: Jane Doe
 
       - field_name: project_team_member_email
-        label: Project Team Member Email
+        label:
+          en: Project Team Member Email
+          de: E-Mail des Teammitglieds
         form_placeholder: jane@example.com
 
       - field_name: project_team_member_phone
-        label: Project Team Member Phone
+        label:
+          en: Project Team Member Phone
+          de: Telefon des Teammitglieds
         form_placeholder: "+49 8161 71 0000"
 
   - field_name: costs
-    label: Costs (Decimal)
-    help_text: Total project costs as a decimal number.
+    label:
+      en: Costs (Decimal)
+      de: Kosten (Dezimalzahl)
+    help_text:
+      en: Total project costs as a decimal number.
+      de: Gesamtkosten des Projekts als Dezimalzahl.
     validators: ignore_missing float_validator
 
   - field_name: project_status
-    label: Project Status
+    label:
+      en: Project Status
+      de: Projektstatus
     form_snippet: select.html
     choices:
       - value: concept
-        label: Concept
+        label:
+          en: Concept
+          de: Konzept
       - value: design
-        label: Design
+        label:
+          en: Design
+          de: Entwurf
       - value: development
-        label: Development
+        label:
+          en: Development
+          de: Entwicklung
       - value: testing
-        label: Testing
+        label:
+          en: Testing
+          de: Test
       - value: operational
-        label: Operational
+        label:
+          en: Operational
+          de: In Betrieb
       - value: maintenance
-        label: Maintenance
+        label:
+          en: Maintenance
+          de: Wartung
       - value: deprecated
-        label: Deprecated
+        label:
+          en: Deprecated
+          de: Veraltet
       - value: suspended
-        label: Suspended
+        label:
+          en: Suspended
+          de: Ausgesetzt
       - value: pilot
-        label: Pilot
+        label:
+          en: Pilot
+          de: Pilot
       - value: archived
-        label: Archived
+        label:
+          en: Archived
+          de: Archiviert
       - value: prototype
-        label: Prototype
+        label:
+          en: Prototype
+          de: Prototyp
       - value: planned
-        label: Planned
+        label:
+          en: Planned
+          de: Geplant
       - value: approved
-        label: Approved
+        label:
+          en: Approved
+          de: Genehmigt
       - value: released
-        label: Released
+        label:
+          en: Released
+          de: Veröffentlicht
       - value: experimental
-        label: Experimental
+        label:
+          en: Experimental
+          de: Experimentell
 
 resource_fields:
 
@@ -294,57 +476,93 @@ resource_fields:
     preset: resource_url_upload
 
   - field_name: name
-    label: Name
+    label:
+      en: Name
+      de: Name
     form_placeholder: "e.g. Project report PDF"
 
   - field_name: description
-    label: Description
+    label:
+      en: Description
+      de: Beschreibung
     form_snippet: textarea.html
 
   - field_name: project_uri
-    label: Project URI
-    help_text: URL to an associated distribution or project page.
+    label:
+      en: Project URI
+      de: Projekt-URI
+    help_text:
+      en: URL to an associated distribution or project page.
+      de: URL zu einer zugehörigen Distribution oder Projektseite.
 
   - field_name: format
-    label: Format
+    label:
+      en: Format
+      de: Format
     preset: resource_format_autocomplete
 
   - field_name: access_url
-    label: Access URL
+    label:
+      en: Access URL
+      de: Zugriffs-URL
 
   - field_name: download_url
-    label: Download URL
+    label:
+      en: Download URL
+      de: Download-URL
 
   - field_name: byte_size
-    label: Byte Size
+    label:
+      en: Byte Size
+      de: Dateigröße (Bytes)
     validators: ignore_missing int_validator
 
   - field_name: mime_type
-    label: MIME Type
+    label:
+      en: MIME Type
+      de: MIME-Typ
 
   - field_name: character_set
-    label: Character Set
+    label:
+      en: Character Set
+      de: Zeichensatz
 
   - field_name: distribution_access_rights
-    label: Distribution Access Rights
+    label:
+      en: Distribution Access Rights
+      de: Zugriffsrechte
     form_snippet: select.html
     choices:
       - value: public
-        label: Public
+        label:
+          en: Public
+          de: Öffentlich
       - value: registered_user
-        label: Registered user
+        label:
+          en: Registered User
+          de: Registrierter Benutzer
       - value: organization_member
-        label: Organization member
+        label:
+          en: Organization Member
+          de: Organisationsmitglied
       - value: allowed_user_only
-        label: Allowed user only
+        label:
+          en: Allowed Users Only
+          de: Nur zugelassene Benutzer
 
   - field_name: issued
-    label: Issued
+    label:
+      en: Issued
+      de: Ausgabedatum
     preset: date
 
   - field_name: modified
-    label: Modified
+    label:
+      en: Modified
+      de: Änderungsdatum
     preset: date
 
   - field_name: license
-    label: Licence
+    label:
+      en: Licence
+      de: Lizenz
