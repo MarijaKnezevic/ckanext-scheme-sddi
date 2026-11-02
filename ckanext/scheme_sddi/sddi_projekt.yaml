@@ -222,13 +222,30 @@ dataset_fields:
   - field_name: project_manager_mail
     label: Project Manager Email
 
+  - field_name: project_manager_phone
+    label: Project Manager Phone
+    form_placeholder: "+49 8161 71 0000"
+
   - field_name: involved_organizations
     label: Involved Organizations
     help_text: Names of organizations involved in the project. Separate with semicolons.
 
-  - field_name: project_team
-    label: Project Team
-    help_text: Names of team members. Separate with semicolons.
+  - field_name: project_team_member
+    label: Project Team Member
+    preset: composite_repeating
+    form_blanks: 1
+    subfields:
+      - field_name: project_team_member_name
+        label: Project Team Member Name
+        form_placeholder: Jane Doe
+
+      - field_name: project_team_member_email
+        label: Project Team Member Email
+        form_placeholder: jane@example.com
+
+      - field_name: project_team_member_phone
+        label: Project Team Member Phone
+        form_placeholder: "+49 8161 71 0000"
 
   - field_name: costs
     label: Costs (Decimal)
@@ -285,7 +302,7 @@ resource_fields:
     form_snippet: textarea.html
 
   - field_name: project_uri
-    label: Project URI / Distribution
+    label: Project URI
     help_text: URL to an associated distribution or project page.
 
   - field_name: format
