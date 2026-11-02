@@ -274,6 +274,12 @@ dataset_fields:
     validators: ignore_missing
     form_placeholder: https://example.com/docs
 
+  - field_name: conformance
+    label: Conformance
+    validators: ignore_missing
+    form_snippet: textarea.html
+    help_text: Reference to conformance declarations or standards this application conforms to (e.g., OGC conformance classes, API standards).
+
 resource_fields:
   - field_name: url
     label: URL

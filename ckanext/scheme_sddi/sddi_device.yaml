@@ -318,9 +318,11 @@ dataset_fields:
         label: AMQP
       - value: STOMP
         label: STOMP
+      - value: CoAP
+        label: CoAP
       - value: Other
         label: Other
- 
+
   - field_name: service_specification
     label: Service Specification
     form_snippet: select.html

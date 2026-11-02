@@ -325,6 +325,8 @@ dataset_fields:
         label: AMQP
       - value: STOMP
         label: STOMP
+      - value: CoAP
+        label: CoAP
       - value: Other
         label: Other
 
