@@ -9,7 +9,9 @@ dataset_fields:
 # ============================================================
 
   - field_name: title
-    label: Title
+    label:
+      en: Title
+      de: Titel
     preset: title
     form_placeholder: eg. A descriptive title
 
@@ -19,7 +21,9 @@ dataset_fields:
     form_placeholder: eg. my-dataset
 
   - field_name: notes
-    label: Description
+    label:
+      en: Description
+      de: Beschreibung
     required: True
     validators: scheming_required
     form_snippet: markdown.html
@@ -32,18 +36,24 @@ dataset_fields:
     validators: required_tags tag_string_convert
     form_placeholder: eg. economy, mental health, government
     help_text:
-      Über Tags können Katalogeinträge besser gefunden werden. Ein Tag ist
-      ein Wort, welches im Zusammenhang mit dem Eintrag steht.
+      en: Tags help others find this entry in the catalogue.
+      de: Über Tags können Katalogeinträge besser gefunden werden. Ein Tag ist ein Wort, welches im Zusammenhang mit dem Eintrag steht.
 
   - field_name: license_id
-    label: License
+    label:
+      en: License
+      de: Lizenz
     required: True
     validators: scheming_required
     form_snippet: license.html
-    help_text: License definitions and additional information can be found at http://opendefinition.org/ Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für die offene Daten zu nutzen.
+    help_text:
+      en: License definitions and additional information can be found at http://opendefinition.org/
+      de: Es wird empfohlen Creative Commons Zero oder Creative Commons Namensnennung für offene Daten zu nutzen. Mehr Infos http://opendefinition.org/
 
   - field_name: language
-    label: Language
+    label:
+      en: Language
+      de: Sprache
     validators: ignore_missing
     preset: select
     choices:
@@ -51,7 +61,9 @@ dataset_fields:
         label: Deutsch
       - value: en
         label: English
-    help_text: Legt fest in welcher Sprache der Katalogeintrag verfasst ist.
+    help_text:
+      en: Language in which this catalogue entry is written.
+      de: Legt fest in welcher Sprache der Katalogeintrag verfasst ist.
 
   - field_name: author
     label: Author
@@ -59,14 +71,18 @@ dataset_fields:
     preset: composite_repeating
     subfields:
       - field_name: author_name
-        label: Author
+        label:
+          en: Author Name
+          de: Name des Autors
         required: True
         validators: scheming_required
         form_placeholder: Joe Bloggs
 
       - field_name: author_email
+        label:
+          en: Author Email
+          de: E-Mail des Autors
         form_placeholder: joe@example.com
-        label: Author Email
 
   - field_name: maintainer
     label: Maintainer
@@ -74,244 +90,429 @@ dataset_fields:
     preset: composite_repeating
     subfields:
       - field_name: maintainer_name
-        label: Maintainer
+        label:
+          en: Maintainer Name
+          de: Name des Verantwortlichen
         form_placeholder: Joe Bloggs
 
       - field_name: maintainer_email
+        label:
+          en: Maintainer Email
+          de: E-Mail des Verantwortlichen
         form_placeholder: joe@example.com
-        label: Maintainer Email
 
       - field_name: phone
-        label: Phone number
+        label:
+          en: Phone Number
+          de: Telefonnummer
         display_snippet: text.html
         form_placeholder: "+49 8161 71 0000"
 
       - field_name: role
-        label: Role
+        label:
+          en: Role
+          de: Rolle
         preset: select
         display_snippet: multiple_select.html
         choices:
           - value: data_collector
-            label: Data Collector
+            label:
+              en: Data Collector
+              de: Datenerfasser
           - value: expert
-            label: Expert
+            label:
+              en: Expert
+              de: Experte
           - value: resourceProvider
-            label: Resource Provider
+            label:
+              en: Resource Provider
+              de: Ressourcenanbieter
           - value: custodian
-            label: Custodian
+            label:
+              en: Custodian
+              de: Verwalter
           - value: owner
-            label: Owner
+            label:
+              en: Owner
+              de: Eigentümer
           - value: user
-            label: User
+            label:
+              en: User
+              de: Benutzer
           - value: distributor
-            label: Distributor
+            label:
+              en: Distributor
+              de: Verteiler
           - value: originator
-            label: Originator
+            label:
+              en: Originator
+              de: Urheber
           - value: pointOfContact
-            label: Point of Contact
+            label:
+              en: Point of Contact
+              de: Ansprechpartner
           - value: principalInvestigator
-            label: Principal Investigator
+            label:
+              en: Principal Investigator
+              de: Hauptermittler
           - value: processor
-            label: Processor
+            label:
+              en: Processor
+              de: Bearbeiter
           - value: publisher
-            label: Publisher
+            label:
+              en: Publisher
+              de: Herausgeber
           - value: author
-            label: Author
+            label:
+              en: Author
+              de: Autor
           - value: sponsor
-            label: Sponsor
+            label:
+              en: Sponsor
+              de: Sponsor
           - value: coAuthor
-            label: Co-Author
+            label:
+              en: Co-Author
+              de: Mitautor
           - value: collaborator
-            label: Collaborator
+            label:
+              en: Collaborator
+              de: Mitarbeiter
           - value: editor
-            label: Editor
+            label:
+              en: Editor
+              de: Redakteur
           - value: mediator
-            label: Mediator
+            label:
+              en: Mediator
+              de: Vermittler
           - value: rightsHolder
-            label: Rights Holder
+            label:
+              en: Rights Holder
+              de: Rechteinhaber
           - value: contributor
-            label: Contributor
+            label:
+              en: Contributor
+              de: Beitragender
           - value: funder
-            label: Funder
+            label:
+              en: Funder
+              de: Förderer
           - value: stakeholder
-            label: Stakeholder
+            label:
+              en: Stakeholder
+              de: Interessenvertreter
 
   - field_name: owner_org
-    label: Organization
+    label:
+      en: Organization
+      de: Organisation
     form_snippet: organization_alone.html
-    help_text: Legt fest welcher Organisation der Katalogeintrag zugeordnet ist.
+    help_text:
+      en: Organization this catalogue entry belongs to.
+      de: Legt fest welcher Organisation der Katalogeintrag zugeordnet ist.
 
   - field_name: owner_org
-    label: Organization
+    label:
+      en: Visibility
+      de: Sichtbarkeit
     form_snippet: visibility.html
-    help_text: Legt fest wer den Katalogeintrag sehen kann.
+    help_text:
+      en: Defines who can see this catalogue entry.
+      de: Legt fest wer den Katalogeintrag sehen kann.
 
   - field_name: group
-    label: Group
+    label:
+      en: Group
+      de: Gruppe
     form_snippet: group.html
     display_snippet: null
 
   - field_name: custom-fields
-    label: Benutzerdefiniertes Feld
+    label:
+      en: Custom Fields
+      de: Benutzerdefiniertes Feld
     form_snippet: custom_form_fields.html
 
   - field_name: update_period
-    label: Update Period
+    label:
+      en: Update Period
+      de: Aktualisierungszeitraum
     validators: ignore_missing
     preset: select
     choices:
       - value: continual
-        label: Continual
+        label:
+          en: Continual
+          de: Kontinuierlich
       - value: daily
-        label: Daily
+        label:
+          en: Daily
+          de: Täglich
       - value: weekly
-        label: Weekly
+        label:
+          en: Weekly
+          de: Wöchentlich
       - value: fortnightly
-        label: Fortnightly
+        label:
+          en: Fortnightly
+          de: Vierzehntäglich
       - value: monthly
-        label: Monthly
+        label:
+          en: Monthly
+          de: Monatlich
       - value: quarterly
-        label: Quarterly
+        label:
+          en: Quarterly
+          de: Vierteljährlich
       - value: biannually
-        label: Biannually
+        label:
+          en: Biannually
+          de: Halbjährlich
       - value: annually
-        label: Annually
+        label:
+          en: Annually
+          de: Jährlich
       - value: asNeeded
-        label: As Needed
+        label:
+          en: As Needed
+          de: Bei Bedarf
       - value: irregular
-        label: Irregular
+        label:
+          en: Irregular
+          de: Unregelmäßig
       - value: notPlanned
-        label: Not Planned
+        label:
+          en: Not Planned
+          de: Nicht geplant
       - value: unknown
-        label: Unknown
+        label:
+          en: Unknown
+          de: Unbekannt
       - value: periodic
-        label: Periodic
+        label:
+          en: Periodic
+          de: Periodisch
       - value: semimonthly
-        label: Semimonthly
+        label:
+          en: Semimonthly
+          de: Halbmonatlich
       - value: biennially
-        label: Biennially
+        label:
+          en: Biennially
+          de: Zweijährlich
 
   - field_name: begin_collection_date
-    label: Start des Gültigkeitszeitraumes
+    label:
+      en: Start of Validity Period
+      de: Start des Gültigkeitszeitraumes
     preset: date
 
   - field_name: end_collection_date
-    label: Ende des Gültigkeitszeitraumes
+    label:
+      en: End of Validity Period
+      de: Ende des Gültigkeitszeitraumes
     preset: date
     help_text:
-      Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
+      en: Marks the validity period of this catalogue entry.
+      de: Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
 
-  # Device specific field is_sensor_group 
+  # Device specific field is_sensor_group
   - field_name: is_sensor_group
-    label: Does this device represent multiple sensors?
+    label:
+      en: Does this device represent multiple sensors?
+      de: Repräsentiert dieses Gerät mehrere Sensoren?
     form_snippet: select.html
     choices:
       - value: "true"
-        label: "Yes"
+        label:
+          en: "Yes"
+          de: "Ja"
       - value: "false"
-        label: "No"
-    help_text: >
-      If yes and a location is given, the location geometry
-      must be of type GM_MultiPoint.
+        label:
+          en: "No"
+          de: "Nein"
+    help_text:
+      en: If yes, add the locations of all sensors in the group as individual points in the Spatial Extent field (GM_MultiPoint geometry required).
+      de: Wenn ja, tragen Sie die Standorte aller Sensoren der Gruppe als einzelne Punkte im Feld 'Räumliche Ausdehnung' ein (GM_MultiPoint-Geometrie erforderlich).
 
   - field_name: spatial
     label:
-      en: Spatial extent
+      en: Spatial Extent
       de: Räumliche Ausdehnung
     form_snippet: spatial.html
     display_snippet: spatial.html
-    help_text: Über eine räumliche Ausdehnung (Punkt oder Polygon) kann später nach Katalogeinträgen gesucht werden.
+    help_text:
+      en: A spatial extent (point or polygon) allows later searching by location.
+      de: Über eine räumliche Ausdehnung (Punkt oder Polygon) kann später nach Katalogeinträgen gesucht werden.
 
   - field_name: licence_agreement
-    label: Datenschutzerklärung
+    label:
+      en: Data Privacy Declaration
+      de: Datenschutzerklärung
     required: True
     preset: multiple_checkbox
     choices:
       - value: licence_agreement_check
-        label: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
+        label:
+          en: I confirm that all data I have entered is covered by the license selected above.
+          de: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
 
   # ---- Device specific fields ----
- 
+
   - field_name: manufacturer
-    label: Manufacturer
- 
+    label:
+      en: Manufacturer
+      de: Hersteller
+    validators: ignore_missing
+
   - field_name: device_model
-    label: Device Model
- 
+    label:
+      en: Device Model
+      de: Gerätemodell
+    validators: ignore_missing
+
   - field_name: serial_number
-    label: Serial Number
- 
+    label:
+      en: Serial Number
+      de: Seriennummer
+    validators: ignore_missing
+
   - field_name: last_maintenance_date
-    label: Last Maintenance Date
+    label:
+      en: Last Maintenance Date
+      de: Letztes Wartungsdatum
     preset: date
+    validators: ignore_missing
 
   - field_name: next_maintenance_date
-    label: Next Maintenance Date
+    label:
+      en: Next Maintenance Date
+      de: Nächstes Wartungsdatum
     preset: date
- 
+    validators: ignore_missing
+
   - field_name: maintenance_frequency
-    label: Maintenance Frequency
-    form_snippet: select.html
+    label:
+      en: Maintenance Frequency
+      de: Wartungshäufigkeit
+    validators: ignore_missing
+    preset: select
     choices:
       - value: continual
-        label: Continual
+        label:
+          en: Continual
+          de: Kontinuierlich
       - value: daily
-        label: Daily
+        label:
+          en: Daily
+          de: Täglich
       - value: weekly
-        label: Weekly
+        label:
+          en: Weekly
+          de: Wöchentlich
       - value: fortnightly
-        label: Fortnightly
+        label:
+          en: Fortnightly
+          de: Vierzehntäglich
       - value: monthly
-        label: Monthly
+        label:
+          en: Monthly
+          de: Monatlich
       - value: quarterly
-        label: Quarterly
+        label:
+          en: Quarterly
+          de: Vierteljährlich
       - value: biannually
-        label: Biannually
+        label:
+          en: Biannually
+          de: Halbjährlich
       - value: annually
-        label: Annually
+        label:
+          en: Annually
+          de: Jährlich
       - value: asNeeded
-        label: As Needed
+        label:
+          en: As Needed
+          de: Bei Bedarf
       - value: irregular
-        label: Irregular
+        label:
+          en: Irregular
+          de: Unregelmäßig
       - value: notPlanned
-        label: Not Planned
+        label:
+          en: Not Planned
+          de: Nicht geplant
       - value: unknown
-        label: Unknown
+        label:
+          en: Unknown
+          de: Unbekannt
       - value: periodic
-        label: Periodic
+        label:
+          en: Periodic
+          de: Periodisch
       - value: semimonthly
-        label: Semimonthly
+        label:
+          en: Semimonthly
+          de: Halbmonatlich
       - value: biennially
-        label: Biennially
- 
+        label:
+          en: Biennially
+          de: Zweijährlich
+
   - field_name: maintenance_note
-    label: Maintenance Note
+    label:
+      en: Maintenance Note
+      de: Wartungshinweis
+    validators: ignore_missing
     form_snippet: textarea.html
- 
+
   - field_name: physical_description
-    label: Physical Description
+    label:
+      en: Physical Description
+      de: Physische Beschreibung
+    validators: ignore_missing
     form_snippet: textarea.html
- 
+
   - field_name: device_capability
-    label: Device Capability
+    label:
+      en: Device Capability
+      de: Gerätefähigkeit
+    validators: ignore_missing
     form_snippet: textarea.html
- 
-  - field_name: historical_location
-    label: Historical Location (GeoJSON)
-    form_snippet: textarea.html
-    help_text: Previous location(s) as GeoJSON geometry.
- 
+
   - field_name: historical_location_time_instant
-    label: Historical Location Time Instant
+    label: Historical Location
+    validators: ignore_missing
     preset: composite_repeating
     subfields:
-      - field_name: datetime
-        label: Date and Time
+      - field_name: location
+        label:
+          en: Location (GeoJSON)
+          de: Standort (GeoJSON)
+        form_placeholder: e.g. {"type":"Point","coordinates":[11.57,48.13]}
+
+      - field_name: date_from
+        label:
+          en: From
+          de: Von
         preset: date
+        help_text: Datum, ab dem sich der Sensor an diesem Standort befand. / Date from which the sensor was located at this place.
+
+      - field_name: date_to
+        label:
+          en: To
+          de: Bis
+        preset: date
+        help_text: Datum, bis zu dem sich der Sensor an diesem Standort befand. / Date until which the sensor was located at this place.
 
   - field_name: protocol
-    label: Protocol
-    form_snippet: select.html
+    label:
+      en: Protocol
+      de: Protokoll
+    validators: ignore_missing
+    preset: select
     choices:
       - value: HTTP
         label: HTTP
@@ -334,11 +535,16 @@ dataset_fields:
       - value: CoAP
         label: CoAP
       - value: Other
-        label: Other
+        label:
+          en: Other
+          de: Sonstige
 
   - field_name: service_specification
-    label: Service Specification
-    form_snippet: select.html
+    label:
+      en: Service Specification
+      de: Dienstspezifikation
+    validators: ignore_missing
+    preset: select
     choices:
       - value: OGC_WMS
         label: OGC Web Map Service (WMS)
@@ -387,135 +593,246 @@ dataset_fields:
       - value: RPC
         label: RPC service
       - value: other
-        label: Other
+        label:
+          en: Other
+          de: Sonstige
       - value: other_open
-        label: Other (Open)
+        label:
+          en: Other (Open)
+          de: Sonstige (Offen)
       - value: other_not_open
-        label: Other (Not Open)
+        label:
+          en: Other (Not Open)
+          de: Sonstige (Nicht offen)
       - value: other_non_commercial
-        label: Other (Non-Commercial)
+        label:
+          en: Other (Non-Commercial)
+          de: Sonstige (Nicht kommerziell)
 
   - field_name: properties
-    label: Properties
+    label:
+      en: Properties
+      de: Eigenschaften
+    validators: ignore_missing
     form_snippet: textarea.html
-    help_text: Key device properties as free text or JSON.
- 
+    help_text:
+      en: Key device properties as free text or JSON.
+      de: Wesentliche Geräteeigenschaften als Freitext oder JSON.
+
   - field_name: provider
-    label: Provider
-    help_text: Organization or person providing / operating this device.
- 
+    label:
+      en: Provider
+      de: Anbieter
+    validators: ignore_missing
+    help_text:
+      en: Organization or person providing / operating this device.
+      de: Organisation oder Person, die dieses Gerät bereitstellt / betreibt.
+
   - field_name: response_formats
-    label: Response Formats
-    help_text: Data formats returned by this device (e.g. JSON, CSV, SensorML).
- 
+    label:
+      en: Response Formats
+      de: Antwortformate
+    validators: ignore_missing
+    help_text:
+      en: Data formats returned by this device (e.g. JSON, CSV, SensorML).
+      de: Von diesem Gerät zurückgegebene Datenformate (z. B. JSON, CSV, SensorML).
+
   - field_name: security_functions
-    label: Security Functions
-    help_text: Security features of this device.
- 
+    label:
+      en: Security Functions
+      de: Sicherheitsfunktionen
+    validators: ignore_missing
+    help_text:
+      en: Security features of this device.
+      de: Sicherheitsmerkmale dieses Geräts.
+
   - field_name: device_status
-    label: Device Status
-    form_snippet: select.html
+    label:
+      en: Device Status
+      de: Gerätestatus
+    validators: ignore_missing
+    preset: select
     choices:
       - value: concept
-        label: Concept
+        label:
+          en: Concept
+          de: Konzept
       - value: design
-        label: Design
+        label:
+          en: Design
+          de: Entwurf
       - value: development
-        label: Development
+        label:
+          en: Development
+          de: Entwicklung
       - value: testing
-        label: Testing
+        label:
+          en: Testing
+          de: Test
       - value: operational
-        label: Operational
+        label:
+          en: Operational
+          de: In Betrieb
       - value: maintenance
-        label: Maintenance
+        label:
+          en: Maintenance
+          de: Wartung
       - value: deprecated
-        label: Deprecated
+        label:
+          en: Deprecated
+          de: Veraltet
       - value: suspended
-        label: Suspended
+        label:
+          en: Suspended
+          de: Ausgesetzt
       - value: pilot
-        label: Pilot
+        label:
+          en: Pilot
+          de: Pilot
       - value: archived
-        label: Archived
+        label:
+          en: Archived
+          de: Archiviert
       - value: prototype
-        label: Prototype
+        label:
+          en: Prototype
+          de: Prototyp
       - value: planned
-        label: Planned
+        label:
+          en: Planned
+          de: Geplant
       - value: approved
-        label: Approved
+        label:
+          en: Approved
+          de: Genehmigt
       - value: released
-        label: Released
+        label:
+          en: Released
+          de: Veröffentlicht
       - value: experimental
-        label: Experimental
- 
+        label:
+          en: Experimental
+          de: Experimentell
+
   - field_name: observed_property
-    label: Observed Property
-    help_text: Physical or environmental property this device observes (e.g. temperature, humidity).
+    label:
+      en: Observed Property
+      de: Beobachtete Eigenschaft
+    validators: ignore_missing
+    help_text:
+      en: Physical or environmental property this device observes (e.g. temperature, humidity).
+      de: Physikalische oder umweltbezogene Eigenschaft, die dieses Gerät beobachtet (z. B. Temperatur, Luftfeuchtigkeit).
 
   - field_name: is_raw_data
-    label: Does this entry contain raw data?
+    label:
+      en: Does this entry contain raw data?
+      de: Enthält dieser Eintrag Rohdaten?
     validators: ignore_missing
     form_snippet: select.html
     choices:
       - value: "true"
-        label: "Yes"
+        label:
+          en: "Yes"
+          de: "Ja"
       - value: "false"
-        label: "No"
-    help_text: Indicates whether this device provides raw (unprocessed) data.
+        label:
+          en: "No"
+          de: "Nein"
+    help_text:
+      en: Indicates whether this catalogue entry contains raw (unprocessed) data.
+      de: Gibt an, ob dieser Katalogeintrag Rohdaten (unverarbeitete Daten) enthält.
 
   - field_name: data_modification
-    label: Data Modification
+    label:
+      en: Data Modification
+      de: Datenmodifikation
     validators: ignore_missing
     form_snippet: conditional_on_raw_data.html
-    help_text: >
-      Required when data is not raw: describe how the data was modified or processed.
+    help_text:
+      en: Required when data is not raw — describe how the data was modified or processed.
+      de: Erforderlich wenn die Daten nicht roh sind — beschreiben Sie, wie die Daten verändert oder verarbeitet wurden.
 
 resource_fields:
- 
+
   - field_name: url
     label: URL
     preset: resource_url_upload
- 
+
   - field_name: name
-    label: Name
- 
+    label:
+      en: Name
+      de: Name
+
   - field_name: description
-    label: Description
+    label:
+      en: Description
+      de: Beschreibung
     form_snippet: textarea.html
- 
+
   - field_name: format
-    label: Format
+    label:
+      en: Format
+      de: Format
     preset: resource_format_autocomplete
- 
+
   - field_name: access_url
-    label: Access URL
- 
+    label:
+      en: Access URL
+      de: Zugriffs-URL
+    validators: ignore_missing
+
   - field_name: download_url
-    label: Download URL
- 
+    label:
+      en: Download URL
+      de: Download-URL
+    validators: ignore_missing
+
   - field_name: byte_size
-    label: Byte Size
+    label:
+      en: Byte Size
+      de: Dateigröße (Bytes)
     validators: ignore_missing int_validator
- 
+
   - field_name: mime_type
-    label: MIME Type
- 
+    label:
+      en: MIME Type
+      de: MIME-Typ
+    validators: ignore_missing
+
   - field_name: distribution_access_rights
-    label: Distribution Access Rights
-    form_snippet: select.html
+    label:
+      en: Distribution Access Rights
+      de: Zugriffsrechte
+    validators: ignore_missing
+    preset: select
     choices:
       - value: public
-        label: Public
+        label:
+          en: Public
+          de: Öffentlich
       - value: registered_user
-        label: Registered user
+        label:
+          en: Registered Users
+          de: Registrierte Benutzer
       - value: organization_member
-        label: Organization member
+        label:
+          en: Members of the Same Organization
+          de: Mitglieder der selben Organisation
       - value: allowed_user_only
-        label: Allowed user only
- 
+        label:
+          en: Allowed Users Only
+          de: Nur ausgewählte Benutzer
+
   - field_name: issued
-    label: Issued
+    label:
+      en: Issued
+      de: Ausgabedatum
     preset: date
- 
+    validators: ignore_missing
+
   - field_name: modified
-    label: Modified
+    label:
+      en: Modified
+      de: Änderungsdatum
     preset: date
+    validators: ignore_missing
