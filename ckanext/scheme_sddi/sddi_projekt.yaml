@@ -376,9 +376,6 @@ dataset_fields:
     label: Project Team Member
     preset: composite_repeating
     form_blanks: 1
-    help_text:
-      en: Add one entry per team member.
-      de: Einen Eintrag pro Teammitglied hinzufügen.
     subfields:
       - field_name: project_team_member_name
         label:
@@ -474,6 +471,20 @@ dataset_fields:
           en: Experimental
           de: Experimentell
 
+  - field_name: metadata_created
+    label:
+      en: Issued
+      de: Ausgabedatum
+    display_snippet: date.html
+    form_snippet: null
+
+  - field_name: metadata_modified
+    label:
+      en: Modified
+      de: Änderungsdatum
+    display_snippet: date.html
+    form_snippet: null
+
 resource_fields:
 
   - field_name: url
@@ -492,35 +503,19 @@ resource_fields:
       de: Beschreibung
     form_snippet: textarea.html
 
-  - field_name: project_uri
-    label:
-      en: Project URI
-      de: Projekt-URI
-    help_text:
-      en: URL to an associated distribution or project page.
-      de: URL zu einer zugehörigen Distribution oder Projektseite.
-
   - field_name: format
     label:
       en: Format
       de: Format
     preset: resource_format_autocomplete
 
-  - field_name: access_url
-    label:
-      en: Access URL
-      de: Zugriffs-URL
-
-  - field_name: download_url
-    label:
-      en: Download URL
-      de: Download-URL
-
-  - field_name: byte_size
+  - field_name: size
     label:
       en: Byte Size
       de: Dateigröße (Bytes)
-    validators: ignore_missing int_validator
+    validators: ignore_missing
+    display_snippet: text.html
+    form_snippet: null
 
   - field_name: mime_type
     label:
@@ -555,19 +550,17 @@ resource_fields:
           en: Allowed Users Only
           de: Nur zugelassene Benutzer
 
-  - field_name: issued
-    label:
-      en: Issued
-      de: Ausgabedatum
-    preset: date
-
-  - field_name: modified
-    label:
-      en: Modified
-      de: Änderungsdatum
-    preset: date
-
   - field_name: license
     label:
       en: Licence
       de: Lizenz
+
+  # ── Project specific field ────────────────────────────────────────────────
+  - field_name: project_uri
+    label:
+      en: Project URI
+      de: Projekt-URI
+    validators: ignore_missing
+    help_text:
+      en: URL to an associated distribution or project page.
+      de: URL zu einer zugehörigen Distribution oder Projektseite.
