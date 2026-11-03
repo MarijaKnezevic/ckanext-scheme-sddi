@@ -465,9 +465,9 @@ dataset_fields:
   - field_name: data_modification
     label: Data Modification
     validators: ignore_missing
-    form_snippet: textarea.html
+    form_snippet: conditional_on_raw_data.html
     help_text: >
-      Description of how the raw data is modified or processed.
+      Required when data is not raw: describe how the data was modified or processed.
 
 resource_fields:
  
