@@ -706,33 +706,24 @@ resource_fields:
       en: Character Set
       de: Zeichensatz
 
-  - field_name: distribution_access_rights
-    label:
-      en: Distribution Access Rights
-      de: Zugriffsrechte
-    form_snippet: select.html
+  - field_name: restricted_level
+    label: Zugriffsrechte
+    validators: ignore_missing
+    preset: select
     choices:
       - value: public
-        label:
-          en: Public
-          de: Öffentlich
-      - value: registered_user
-        label:
-          en: Registered User
-          de: Registrierter Benutzer
-      - value: organization_member
-        label:
-          en: Organization Member
-          de: Organisationsmitglied
-      - value: allowed_user_only
-        label:
-          en: Allowed Users Only
-          de: Nur zugelassene Benutzer
+        label: Öffentlich
+      - value: registered
+        label: Registrierte Benutzer
+      - value: same_organization
+        label: Mitglieder der selben Organisation
+      - value: only_allowed_users
+        label: Nur ausgewählte Benutzer
+    help_text: Legt fest, wer Zugriff auf die Ressource hat.
 
   - field_name: allowed_users
-    label:
-      en: Allowed Users
-      de: Berechtigte Benutzer
+    label: Allowed Users
+    validators: ignore_missing
     preset: tag_string_autocomplete
     data-module-source: "/api/2/util/user/autocomplete?q=?"
 
