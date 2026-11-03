@@ -5,7 +5,9 @@ The ckanext-theme-sddi is a CKAN extension crafted to provide a specialized them
 The SDDI metadata schemas are defined as YAML files under `ckanext/scheme_sddi/`. Each schema corresponds to one of the nine SDDI catalog categories (Datensatz, Software, Methode, Online-Anwendung, Geoobjekt, Online-Dienst, Projekt, Gerät, Digitaler Zwilling).
 
 It is defined according to the following UML diagram:
-![UMD-SDDI](https://collab.dvb.bayern/download/attachments/67111968/UML%20Diagram%20SDDI%20%28DT%29%20V4.jpg?version=1&modificationDate=1657288940287&api=v2)
+![UMD-SDDI](docs/SDDI_Metadataschema%20-%20SDDI_Metadataschema.jpg)
+
+The full UML diagram is available as a PDF: [SDDI_Metadataschema.pdf](docs/SDDI_Metadataschema.pdf)
 
 This plugin enables restricted functions for resources.
 It is possible to specify that the resources have the following rights:
@@ -13,15 +15,6 @@ It is possible to specify that the resources have the following rights:
 - registered - The resource is available only to users who have an account in the catalog.
 - same_organization - Users within the organization for which the catalog entry was created can access the resource.
 - only_allowed_users - Only selected users can access the resource.
-
-### Compatibility
-
-Compatibility with core CKAN versions:
-
-| CKAN version    | Compatible?   |
-| --------------- | ------------- |
-| 2.10            | yes    |
-| 2.11            | not yet    |
 
 ## Installation
 
@@ -110,4 +103,4 @@ To run the tests, do:
 
 ## License
 
-[AGPL](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) — Free for non-commercial and research use with attribution. Commercial use requires written permission from the author.
