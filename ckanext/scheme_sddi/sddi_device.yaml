@@ -4,10 +4,8 @@ about: "SDDI Device metadata schema"
 about_url: https://github.com/MarijaKnezevic/ckanext-scheme-sddi
 
 dataset_fields:
-# ============================================================
-# BASE FIELDS — InformationResource (adapted from sddi_dataset.yaml style)
-# ============================================================
 
+  # ---- InformationResource base fields (shared across all types) ----
   - field_name: title
     label:
       en: Title
@@ -229,12 +227,6 @@ dataset_fields:
     form_snippet: group.html
     display_snippet: null
 
-  - field_name: custom-fields
-    label:
-      en: Custom Fields
-      de: Benutzerdefiniertes Feld
-    form_snippet: custom_form_fields.html
-
   - field_name: update_period
     label:
       en: Update Period
@@ -321,8 +313,8 @@ dataset_fields:
   # Device specific field is_sensor_group
   - field_name: is_sensor_group
     label:
-      en: Does this device represent multiple sensors?
-      de: Repräsentiert dieses Gerät mehrere Sensoren?
+      en: Does this device represent group of the sensors?
+      de: Repräsentiert dieses Gerät eine Gruppe von Sensoren?
     form_snippet: select.html
     choices:
       - value: "true"
@@ -347,17 +339,12 @@ dataset_fields:
       en: A spatial extent (point or polygon) allows later searching by location.
       de: Über eine räumliche Ausdehnung (Punkt oder Polygon) kann später nach Katalogeinträgen gesucht werden.
 
-  - field_name: licence_agreement
+
+  - field_name: custom-fields
     label:
-      en: Data Privacy Declaration
-      de: Datenschutzerklärung
-    required: True
-    preset: multiple_checkbox
-    choices:
-      - value: licence_agreement_check
-        label:
-          en: I confirm that all data I have entered is covered by the license selected above.
-          de: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
+      en: Custom Fields
+      de: Benutzerdefiniertes Feld
+    form_snippet: custom_form_fields.html
 
   # ---- Device specific fields ----
 
@@ -493,14 +480,14 @@ dataset_fields:
           de: Standort (GeoJSON)
         form_placeholder: e.g. {"type":"Point","coordinates":[11.57,48.13]}
 
-      - field_name: date_from
+      - field_name: historical_location_date_from
         label:
           en: From
           de: Von
         preset: date
         help_text: Datum, ab dem sich der Sensor an diesem Standort befand. / Date from which the sensor was located at this place.
 
-      - field_name: date_to
+      - field_name: historical_location_date_to
         label:
           en: To
           de: Bis
@@ -752,6 +739,19 @@ dataset_fields:
       en: Required when data is not raw — describe how the data was modified or processed.
       de: Erforderlich wenn die Daten nicht roh sind — beschreiben Sie, wie die Daten verändert oder verarbeitet wurden.
 
+# ── Declaration — must be confirmed before submitting ────────────────────
+  - field_name: licence_agreement
+    label:
+      en: Data Privacy Declaration
+      de: Datenschutzerklärung
+    required: True
+    preset: multiple_checkbox
+    choices:
+      - value: licence_agreement_check
+        label:
+          en: I confirm that all data I have entered is covered by the license selected above.
+          de: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
+
 resource_fields:
 
   - field_name: url
@@ -775,64 +775,46 @@ resource_fields:
       de: Format
     preset: resource_format_autocomplete
 
-  - field_name: access_url
-    label:
-      en: Access URL
-      de: Zugriffs-URL
-    validators: ignore_missing
-
-  - field_name: download_url
-    label:
-      en: Download URL
-      de: Download-URL
-    validators: ignore_missing
-
-  - field_name: byte_size
+  - field_name: size
     label:
       en: Byte Size
       de: Dateigröße (Bytes)
-    validators: ignore_missing int_validator
+    validators: ignore_missing
+    display_snippet: text.html
+    form_snippet: null
 
   - field_name: mime_type
     label:
       en: MIME Type
       de: MIME-Typ
-    validators: ignore_missing
 
-  - field_name: distribution_access_rights
+  - field_name: character_set
     label:
-      en: Distribution Access Rights
-      de: Zugriffsrechte
+      en: Character Set
+      de: Zeichensatz
+
+  - field_name: restricted_level
+    label: Zugriffsrechte
     validators: ignore_missing
     preset: select
     choices:
       - value: public
-        label:
-          en: Public
-          de: Öffentlich
-      - value: registered_user
-        label:
-          en: Registered Users
-          de: Registrierte Benutzer
-      - value: organization_member
-        label:
-          en: Members of the Same Organization
-          de: Mitglieder der selben Organisation
-      - value: allowed_user_only
-        label:
-          en: Allowed Users Only
-          de: Nur ausgewählte Benutzer
+        label: Öffentlich
+      - value: registered
+        label: Registrierte Benutzer
+      - value: same_organization
+        label: Mitglieder der selben Organisation
+      - value: only_allowed_users
+        label: Nur ausgewählte Benutzer
+    help_text: Legt fest, wer Zugriff auf die Ressource hat.
 
-  - field_name: issued
-    label:
-      en: Issued
-      de: Ausgabedatum
-    preset: date
+  - field_name: allowed_users
+    label: Allowed Users
     validators: ignore_missing
+    preset: tag_string_autocomplete
+    data-module-source: "/api/2/util/user/autocomplete?q=?"
 
-  - field_name: modified
+  - field_name: license
     label:
-      en: Modified
-      de: Änderungsdatum
-    preset: date
-    validators: ignore_missing
+      en: Licence
+      de: Lizenz

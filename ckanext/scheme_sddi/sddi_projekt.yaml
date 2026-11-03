@@ -482,7 +482,6 @@ resource_fields:
     label:
       en: Name
       de: Name
-    form_placeholder: "e.g. Project report PDF"
 
   - field_name: description
     label:

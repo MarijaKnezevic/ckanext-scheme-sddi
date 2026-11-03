@@ -4,12 +4,12 @@ about: "SDDI Digital Twin metadata schema"
 about_url: https://github.com/MarijaKnezevic/ckanext-scheme-sddi
 
 dataset_fields:
-# ============================================================
-# BASE FIELDS — InformationResource (adapted from sddi_dataset.yaml style)
-# ============================================================
 
+  # ---- InformationResource base fields (shared across all types) ----
   - field_name: title
-    label: Title
+    label:
+      en: Title
+      de: Titel
     preset: title
     form_placeholder: eg. A descriptive title
 
@@ -227,12 +227,6 @@ dataset_fields:
     form_snippet: group.html
     display_snippet: null
 
-  - field_name: custom-fields
-    label:
-      en: Custom Fields
-      de: Benutzerdefiniertes Feld
-    form_snippet: custom_form_fields.html
-
   - field_name: update_period
     label:
       en: Update Period
@@ -326,17 +320,11 @@ dataset_fields:
       en: A spatial extent (point or polygon) allows later searching by location.
       de: Über eine räumliche Ausdehnung (Punkt oder Polygon) kann später nach Katalogeinträgen gesucht werden.
 
-  - field_name: licence_agreement
+  - field_name: custom-fields
     label:
-      en: Data Privacy Declaration
-      de: Datenschutzerklärung
-    required: True
-    preset: multiple_checkbox
-    choices:
-      - value: licence_agreement_check
-        label:
-          en: I confirm that all data I have entered is covered by the license selected above.
-          de: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
+      en: Custom Fields
+      de: Benutzerdefiniertes Feld
+    form_snippet: custom_form_fields.html
 
   # ── Digital Twin specific fields ─────────────────────────────────────────
 
@@ -468,7 +456,21 @@ dataset_fields:
       en: Description of which data layers are publicly accessible.
       de: Beschreibung, welche Datenschichten öffentlich zugänglich sind.
 
+# ── Declaration — must be confirmed before submitting ────────────────────
+  - field_name: licence_agreement
+    label:
+      en: Data Privacy Declaration
+      de: Datenschutzerklärung
+    required: True
+    preset: multiple_checkbox
+    choices:
+      - value: licence_agreement_check
+        label:
+          en: I confirm that all data I have entered is covered by the license selected above.
+          de: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
+
 resource_fields:
+
   - field_name: url
     label: URL
     preset: resource_url_upload
@@ -477,102 +479,59 @@ resource_fields:
     label:
       en: Name
       de: Name
-    form_placeholder: eg. January 2011 Gold Prices
 
   - field_name: description
     label:
       en: Description
       de: Beschreibung
-    form_snippet: markdown.html
-    form_placeholder: Some useful notes about the data
+    form_snippet: textarea.html
 
   - field_name: format
     label:
       en: Format
       de: Format
-    required: True
     preset: resource_format_autocomplete
 
-  - field_name: access_url
-    label:
-      en: Access URL
-      de: Zugriffs-URL
-    validators: ignore_missing
-    form_placeholder: https://example.com
-
-  - field_name: download_url
-    label:
-      en: Download URL
-      de: Download-URL
-    validators: ignore_missing
-    form_placeholder: https://example.com
-
-  - field_name: byte_size
+  - field_name: size
     label:
       en: Byte Size
       de: Dateigröße (Bytes)
-    validators: ignore_missing int_validator
+    validators: ignore_missing
+    display_snippet: text.html
+    form_snippet: null
 
   - field_name: mime_type
     label:
       en: MIME Type
       de: MIME-Typ
-    validators: ignore_missing
-    form_placeholder: e.g. application/json
 
   - field_name: character_set
     label:
       en: Character Set
       de: Zeichensatz
-    validators: ignore_missing
-    form_placeholder: e.g. UTF-8
-
-  - field_name: issued
-    label:
-      en: Issued
-      de: Ausgabedatum
-    preset: date
-    validators: ignore_missing
-
-  - field_name: modified
-    label:
-      en: Modified
-      de: Änderungsdatum
-    preset: date
-    validators: ignore_missing
 
   - field_name: restricted_level
-    label:
-      en: Distribution Access Rights
-      de: Zugriffsrechte
-    validators: scheming_required
+    label: Zugriffsrechte
+    validators: ignore_missing
     preset: select
-    form_include_blank_choice: False
-    required: True
     choices:
       - value: public
-        label:
-          en: Public
-          de: Öffentlich
+        label: Öffentlich
       - value: registered
-        label:
-          en: Registered Users
-          de: Registrierte Benutzer
+        label: Registrierte Benutzer
       - value: same_organization
-        label:
-          en: Members of the Same Organization
-          de: Mitglieder der selben Organisation
+        label: Mitglieder der selben Organisation
       - value: only_allowed_users
-        label:
-          en: Allowed Users Only
-          de: Nur ausgewählte Benutzer
-    help_text:
-      en: Defines who has access to this resource.
-      de: Legt fest, wer Zugriff auf die Ressource hat.
+        label: Nur ausgewählte Benutzer
+    help_text: Legt fest, wer Zugriff auf die Ressource hat.
 
   - field_name: allowed_users
-    label:
-      en: Allowed Users
-      de: Berechtigte Benutzer
+    label: Allowed Users
+    validators: ignore_missing
     preset: tag_string_autocomplete
     data-module-source: "/api/2/util/user/autocomplete?q=?"
+
+  - field_name: license
+    label:
+      en: Licence
+      de: Lizenz

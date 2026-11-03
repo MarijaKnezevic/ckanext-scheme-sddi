@@ -4,10 +4,8 @@ about: "SDDI Online Service metadata schema"
 about_url: https://github.com/MarijaKnezevic/ckanext-scheme-sddi
 
 dataset_fields:
-# ============================================================
-# BASE FIELDS — InformationResource (adapted from sddi_dataset.yaml style)
-# ============================================================
 
+  # ---- InformationResource base fields (shared across all types) ----
   - field_name: title
     label:
       en: Title
@@ -229,12 +227,6 @@ dataset_fields:
     form_snippet: group.html
     display_snippet: null
 
-  - field_name: custom-fields
-    label:
-      en: Custom Fields
-      de: Benutzerdefiniertes Feld
-    form_snippet: custom_form_fields.html
-
   - field_name: update_period
     label:
       en: Update Period
@@ -328,17 +320,11 @@ dataset_fields:
       en: A spatial extent (point or polygon) allows later searching by location.
       de: Über eine räumliche Ausdehnung (Punkt oder Polygon) kann später nach Katalogeinträgen gesucht werden.
 
-  - field_name: licence_agreement
+  - field_name: custom-fields
     label:
-      en: Data Privacy Declaration
-      de: Datenschutzerklärung
-    required: True
-    preset: multiple_checkbox
-    choices:
-      - value: licence_agreement_check
-        label:
-          en: I confirm that all data I have entered is covered by the license selected above.
-          de: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
+      en: Custom Fields
+      de: Benutzerdefiniertes Feld
+    form_snippet: custom_form_fields.html
 
   # ── Online Service specific fields ───────────────────────────────────────
 
@@ -637,6 +623,19 @@ dataset_fields:
     validators: ignore_missing
     form_placeholder: e.g. /collections/buildings
 
+# ── Declaration — must be confirmed before submitting ────────────────────
+  - field_name: licence_agreement
+    label:
+      en: Data Privacy Declaration
+      de: Datenschutzerklärung
+    required: True
+    preset: multiple_checkbox
+    choices:
+      - value: licence_agreement_check
+        label:
+          en: I confirm that all data I have entered is covered by the license selected above.
+          de: Hiermit bestätige ich, dass sämtliche von mir eingetragenen Daten unter die oben ausgewählte Lizenz fallen.
+
 resource_fields:
 
   - field_name: url
@@ -654,47 +653,19 @@ resource_fields:
       de: Beschreibung
     form_snippet: textarea.html
 
-  - field_name: linkage
-    label:
-      en: Service Endpoint URL
-      de: Dienst-Endpunkt-URL
-    validators: ignore_missing
-    form_placeholder: https://example.com/wms
-
-  - field_name: externalDocs
-    label:
-      en: External Documents URL
-      de: URL externer Dokumente
-    form_placeholder: https://example.com/documentation
-
-  - field_name: open_api_document
-    label:
-      en: OpenAPI Document URL
-      de: OpenAPI-Dokument-URL
-    validators: ignore_missing
-    form_placeholder: https://example.com/openapi.json
-
   - field_name: format
     label:
       en: Format
       de: Format
     preset: resource_format_autocomplete
 
-  - field_name: access_url
-    label:
-      en: Access URL
-      de: Zugriffs-URL
-
-  - field_name: download_url
-    label:
-      en: Download URL
-      de: Download-URL
-
-  - field_name: byte_size
+  - field_name: size
     label:
       en: Byte Size
       de: Dateigröße (Bytes)
-    validators: ignore_missing int_validator
+    validators: ignore_missing
+    display_snippet: text.html
+    form_snippet: null
 
   - field_name: mime_type
     label:
@@ -727,19 +698,28 @@ resource_fields:
     preset: tag_string_autocomplete
     data-module-source: "/api/2/util/user/autocomplete?q=?"
 
-  - field_name: issued
-    label:
-      en: Issued
-      de: Ausgabedatum
-    preset: date
-
-  - field_name: modified
-    label:
-      en: Modified
-      de: Änderungsdatum
-    preset: date
-
   - field_name: license
     label:
       en: Licence
       de: Lizenz
+
+  # ── Online Service specific field ────────────────────────────────────────────────
+  - field_name: linkage
+    label:
+      en: Service Endpoint URL
+      de: Dienst-Endpunkt-URL
+    validators: ignore_missing
+    form_placeholder: https://example.com/wms
+
+  - field_name: externalDocs
+    label:
+      en: External Documents URL
+      de: URL externer Dokumente
+    form_placeholder: https://example.com/documentation
+
+  - field_name: open_api_document
+    label:
+      en: OpenAPI Document URL
+      de: OpenAPI-Dokument-URL
+    validators: ignore_missing
+    form_placeholder: https://example.com/openapi.json
