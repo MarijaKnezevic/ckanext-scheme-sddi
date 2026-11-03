@@ -568,11 +568,11 @@ dataset_fields:
       - value: voxel_grid
         label:
           en: Voxel Grid
-          de: Voxel-Gitter
+          de: Voxel-Grid
       - value: mesh_3d
         label:
           en: Mesh 3D
-          de: 3D-Netz
+          de: Mesh 3D
       - value: raster
         label:
           en: Raster
