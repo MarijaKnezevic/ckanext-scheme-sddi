@@ -200,7 +200,20 @@ dataset_fields:
     preset: date
     help_text:
       Dies markiert den Gültigkeitszeitraum des Katalogeintrags.
-      
+
+  # Device specific field is_sensor_group 
+  - field_name: is_sensor_group
+    label: Does this device represent multiple sensors?
+    form_snippet: select.html
+    choices:
+      - value: "true"
+        label: "Yes"
+      - value: "false"
+        label: "No"
+    help_text: >
+      If yes and a location is given, the location geometry
+      must be of type GM_MultiPoint.
+
   - field_name: spatial
     label:
       en: Spatial extent
@@ -437,19 +450,25 @@ dataset_fields:
   - field_name: observed_property
     label: Observed Property
     help_text: Physical or environmental property this device observes (e.g. temperature, humidity).
- 
-  - field_name: is_sensor_group
-    label: Is Sensor Group?
+
+  - field_name: is_raw_data
+    label: Does this entry contain raw data?
+    validators: ignore_missing
     form_snippet: select.html
     choices:
       - value: "true"
         label: "Yes"
       - value: "false"
         label: "No"
+    help_text: Indicates whether this device provides raw (unprocessed) data.
+
+  - field_name: data_modification
+    label: Data Modification
+    validators: ignore_missing
+    form_snippet: textarea.html
     help_text: >
-      OCL constraint: if true and a location is given, the location geometry
-      must be of type GM_MultiPoint.
- 
+      Description of how the raw data is modified or processed.
+
 resource_fields:
  
   - field_name: url
