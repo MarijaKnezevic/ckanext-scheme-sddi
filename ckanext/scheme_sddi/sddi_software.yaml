@@ -580,9 +580,11 @@ resource_fields:
     label: URL
     preset: resource_url_upload
 
-  - field_name: identifier
-    label: Name
-    validators: ignore_missing
+  - field_name: name
+    label:
+      en: Name
+      de: Name
+    form_placeholder: "e.g. Project report PDF"
 
   - field_name: software_help_url
     label:
