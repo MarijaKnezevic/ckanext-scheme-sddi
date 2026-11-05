@@ -338,6 +338,7 @@ dataset_fields:
       en: Role or function of this geo-object in the real world (e.g., base data, reference layer, thematic layer). The role describes why this object is registered as a "Geoobject" rather than a "Dataset and Documents" or "Device".
       de: Rolle oder Funktion dieses Geoobjekts in der realen Welt (z. B. Basisdaten, Referenzebene, Themenebene). Die Rolle beschreibt, warum dieses Objekt als „Geoobjekt" und nicht als „Datensatz und Dokumente" oder „Gerät" registriert wird.
 
+
 # ── Declaration — must be confirmed before submitting ────────────────────
   - field_name: licence_agreement
     label:

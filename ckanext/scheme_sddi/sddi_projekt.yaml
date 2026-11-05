@@ -459,6 +459,26 @@ dataset_fields:
           en: Experimental
           de: Experimentell
 
+  # ── Distribution ─────────────────────────────────────────────────────────────
+  - field_name: has_distribution
+    label:
+      en: Does this entry have a Project URI?
+      de: Hat dieser Eintrag eine Projekt-URI?
+    validators: ignore_missing
+    preset: select
+    choices:
+      - value: "yes"
+        label:
+          en: "Yes"
+          de: "Ja"
+      - value: "no"
+        label:
+          en: "No"
+          de: "Nein"
+    help_text:
+      en: If yes, you will be prompted to add it as a resource in the next step.
+      de: Falls ja, werden Sie im nächsten Schritt aufgefordert, es als Ressource hinzuzufügen.
+
 # ── Declaration — must be confirmed before submitting ────────────────────
   - field_name: licence_agreement
     label:
@@ -539,12 +559,12 @@ resource_fields:
       en: Licence
       de: Lizenz
 
-  # ── Project specific field ────────────────────────────────────────────────
-  - field_name: project_uri
-    label:
-      en: Project URI
-      de: Projekt-URI
-    validators: ignore_missing
-    help_text:
-      en: URL to an associated distribution or project page.
-      de: URL zu einer zugehörigen Distribution oder Projektseite.
+#  # ── Project specific field ────────────────────────────────────────────────
+#  - field_name: project_uri
+#    label:
+#      en: Project URI
+#      de: Projekt-URI
+#    validators: ignore_missing
+#    help_text:
+#      en: URL to an associated distribution or project page.
+#      de: URL zu einer zugehörigen Distribution oder Projektseite.

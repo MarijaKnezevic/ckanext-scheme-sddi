@@ -563,6 +563,64 @@ dataset_fields:
     validators: ignore_missing
     form_snippet: markdown.html
 
+  # ── Distribution ─────────────────────────────────────────────────────────────
+  - field_name: has_software_help
+    label:
+      en: Does this entry have a Software Help resource?
+      de: Hat diese Software eine Hilfe-Ressource?
+    validators: ignore_missing
+    preset: select
+    choices:
+      - value: "yes"
+        label:
+          en: "Yes"
+          de: "Ja"
+      - value: "no"
+        label:
+          en: "No"
+          de: "Nein"
+    help_text:
+      en: If yes, a resource named "Software Help" will be created in the next step.
+      de: Falls ja, wird im nächsten Schritt eine Ressource namens „Software Help" erstellt.
+
+  - field_name: has_documentation_url
+    label:
+      en: Does this entry have a Documentation URL?
+      de: Hat diese Software eine Dokumentations-URL?
+    validators: ignore_missing
+    preset: select
+    choices:
+      - value: "yes"
+        label:
+          en: "Yes"
+          de: "Ja"
+      - value: "no"
+        label:
+          en: "No"
+          de: "Nein"
+    help_text:
+      en: If yes, a resource named "Documentation URL" will be created in the next step.
+      de: Falls ja, wird im nächsten Schritt eine Ressource namens „Documentation URL" erstellt.
+
+  - field_name: has_code_repository_url
+    label:
+      en: Does this entry have a Code Repository URL?
+      de: Hat diese Software eine Code-Repository-URL?
+    validators: ignore_missing
+    preset: select
+    choices:
+      - value: "yes"
+        label:
+          en: "Yes"
+          de: "Ja"
+      - value: "no"
+        label:
+          en: "No"
+          de: "Nein"
+    help_text:
+      en: If yes, a resource named "Code Repository URL" will be created in the next step.
+      de: Falls ja, wird im nächsten Schritt eine Ressource namens „Code Repository URL" erstellt.
+
 # ── Declaration — must be confirmed before submitting ────────────────────
   - field_name: licence_agreement
     label:
@@ -643,24 +701,24 @@ resource_fields:
       en: Licence
       de: Lizenz
 
-# ── Online Application specific field ────────────────────────────────────────────────
-  - field_name: software_help_url
-    label:
-      en: Software Help URL
-      de: Software-Hilfe-URL
-    validators: ignore_missing
-    form_placeholder: https://example.com/help
+# # ── Software specific field ────────────────────────────────────────────────
+#   - field_name: software_help_url
+#     label:
+#       en: Software Help URL
+#       de: Software-Hilfe-URL
+#     validators: ignore_missing
+#     form_placeholder: https://example.com/help
 
-  - field_name: documentation_url
-    label:
-      en: Documentation URL
-      de: Dokumentations-URL
-    validators: ignore_missing
-    form_placeholder: https://example.com/docs
+#   - field_name: documentation_url
+#     label:
+#       en: Documentation URL
+#       de: Dokumentations-URL
+#     validators: ignore_missing
+#     form_placeholder: https://example.com/docs
 
-  - field_name: code_repository_url
-    label:
-      en: Code Repository URL
-      de: Code-Repository-URL
-    validators: ignore_missing
-    form_placeholder: https://github.com/example/repo
+#   - field_name: code_repository_url
+#     label:
+#       en: Code Repository URL
+#       de: Code-Repository-URL
+#     validators: ignore_missing
+#     form_placeholder: https://github.com/example/repo

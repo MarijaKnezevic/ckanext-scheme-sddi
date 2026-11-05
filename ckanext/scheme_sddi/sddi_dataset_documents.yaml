@@ -528,6 +528,26 @@ dataset_fields:
       en: Vertical accuracy or height resolution of the dataset. Required for spatial data types.
       de: Vertikale Genauigkeit oder Höhenauflösung des Datensatzes. Erforderlich für räumliche Datentypen.
 
+  # ── Distribution ─────────────────────────────────────────────────────────────
+  - field_name: has_distribution
+    label:
+      en: Does this entry have a Content URL?
+      de: Hat dieser Eintrag eine Inhalts-URL?
+    validators: ignore_missing
+    preset: select
+    choices:
+      - value: "yes"
+        label:
+          en: "Yes"
+          de: "Ja"
+      - value: "no"
+        label:
+          en: "No"
+          de: "Nein"
+    help_text:
+      en: If yes, you will be prompted to add it as a resource in the next step.
+      de: Falls ja, werden Sie im nächsten Schritt aufgefordert, es als Ressource hinzuzufügen.
+
 # ── Declaration — must be confirmed before submitting ────────────────────
   - field_name: licence_agreement
     label:
@@ -608,11 +628,11 @@ resource_fields:
       en: Licence
       de: Lizenz
 
-# ── Dataset and Documents specific field ────────────────────────────────────────────────
-  - field_name: content_url
-    label:
-      en: Content URL
-      de: Inhalts-URL
-    help_text:
-      en: URL to the primary distribution of this dataset.
-      de: URL zur primären Distribution dieses Datensatzes.
+# # ── Dataset and Documents specific field ────────────────────────────────────────────────
+#   - field_name: content_url
+#     label:
+#       en: Content URL
+#       de: Inhalts-URL
+#     help_text:
+#       en: URL to the primary distribution of this dataset.
+#       de: URL zur primären Distribution dieses Datensatzes.

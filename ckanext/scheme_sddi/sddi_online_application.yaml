@@ -411,6 +411,45 @@ dataset_fields:
       en: Reference to conformance declarations or standards this application conforms to (e.g., OGC conformance classes, API standards).
       de: Verweis auf Konformitätserklärungen oder Standards, denen diese Anwendung entspricht (z. B. OGC-Konformitätsklassen, API-Standards).
 
+  # ── Distribution ─────────────────────────────────────────────────────────────
+  - field_name: has_external_docs
+    label:
+      en: Does this entry have External Documentation?
+      de: Hat diese Anwendung eine externe Dokumentation?
+    validators: ignore_missing
+    preset: select
+    choices:
+      - value: "yes"
+        label:
+          en: "Yes"
+          de: "Ja"
+      - value: "no"
+        label:
+          en: "No"
+          de: "Nein"
+    help_text:
+      en: If yes, a resource named "External Documentation" will be created in the next step.
+      de: Falls ja, wird im nächsten Schritt eine Ressource namens „Externe Dokumentation" erstellt.
+
+  - field_name: has_service_doc
+    label:
+      en: Does this entry have a Service Documentation?
+      de: Hat diese Anwendung eine Dienst-Dokumentation?
+    validators: ignore_missing
+    preset: select
+    choices:
+      - value: "yes"
+        label:
+          en: "Yes"
+          de: "Ja"
+      - value: "no"
+        label:
+          en: "No"
+          de: "Nein"
+    help_text:
+      en: If yes, a resource named "Service Documentation" will be created in the next step.
+      de: Falls ja, wird im nächsten Schritt eine Ressource namens „Dienst-Dokumentation" erstellt.
+
 # ── Declaration — must be confirmed before submitting ────────────────────
   - field_name: licence_agreement
     label:
@@ -491,17 +530,17 @@ resource_fields:
       en: Licence
       de: Lizenz
 
-# ── Online Application specific field ────────────────────────────────────────────────
-  - field_name: service_doc
-    label:
-      en: Service Documentation URL
-      de: Dienst-Dokumentations-URL
-    validators: ignore_missing
-    form_placeholder: https://example.com/docs
+# # ── Online Application specific field ────────────────────────────────────────────────
+#   - field_name: service_doc
+#     label:
+#       en: Service Documentation URL
+#       de: Dienst-Dokumentations-URL
+#     validators: ignore_missing
+#     form_placeholder: https://example.com/docs
 
-  - field_name: external_docs
-    label:
-      en: External Documentation URL
-      de: Externe Dokumentations-URL
-    validators: ignore_missing
-    form_placeholder: https://example.com/external-docs
+#   - field_name: external_docs
+#     label:
+#       en: External Documentation URL
+#       de: Externe Dokumentations-URL
+#     validators: ignore_missing
+#     form_placeholder: https://example.com/external-docs

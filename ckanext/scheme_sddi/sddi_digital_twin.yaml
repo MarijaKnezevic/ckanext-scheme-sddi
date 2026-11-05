@@ -456,6 +456,7 @@ dataset_fields:
       en: Description of which data layers are publicly accessible.
       de: Beschreibung, welche Datenschichten öffentlich zugänglich sind.
 
+
 # ── Declaration — must be confirmed before submitting ────────────────────
   - field_name: licence_agreement
     label:

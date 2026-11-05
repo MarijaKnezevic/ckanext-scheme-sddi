@@ -739,6 +739,7 @@ dataset_fields:
       en: Required when data is not raw — describe how the data was modified or processed.
       de: Erforderlich wenn die Daten nicht roh sind — beschreiben Sie, wie die Daten verändert oder verarbeitet wurden.
 
+
 # ── Declaration — must be confirmed before submitting ────────────────────
   - field_name: licence_agreement
     label:
